@@ -1,0 +1,10 @@
+[user]
+	name = Jack Zhang
+	email = jack333zhang@gmail.com
+[alias]
+	l = log --all --graph --decorate --oneline
+	ll = log --all --graph --decorate
+[core]
+	editor = vim
+[http "https://github.com"]
+	proxy = socks5://192.168.56.1:7890

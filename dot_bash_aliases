@@ -1,0 +1,4 @@
+alias mv='mv -i'
+alias gs='git status'
+alias gb='git branch'
+alias fd='fdfind'
