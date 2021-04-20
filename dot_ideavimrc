@@ -1,0 +1,52 @@
+" === Plugins ===
+set surround
+set multiple-cursors
+set commentary
+set argtextobj
+" set easymotion
+set textobj-entire
+set ReplaceWithRegister
+set NERDTree
+
+" === Idea specific settings ===
+set ideajoin
+set ideastatusicon=gray
+set idearefactormode=keep
+
+" === Leader ===
+let mapleader=","
+noremap \ ,
+map <leader>n :NERDTreeToggle<CR>
+
+" === Search ===
+set ignorecase
+set smartcase
+set hlsearch
+set incsearch
+
+" === Miscellaneous ===
+set backspace=indent,eol,start
+
+" By default, Vim doesn't let you hide a buffer (i.e. have a buffer that isn't
+" shown in any window) that has unsaved changes. This is to prevent you from "
+" forgetting about unsaved changes and then quitting e.g. via `:qa!`. We find
+" hidden buffers helpful enough to disable this protection. See `:help hidden`
+" for more information on this.
+set hidden
+
+" Unbind some useless/annoying default key bindings.
+nmap Q <Nop> " 'Q' in normal mode enters Ex mode. You almost never want this.
+map <C-a> <Nop>
+map <C-x> <Nop>
+
+set showmode
+set history=200
+
+set number
+set relativenumber
+
+" Show a few lines of context around the cursor.  Note that this makes the
+" text scroll if you mouse-click near the start or end of the window.
+set scrolloff=5
+
+set showcmd             " show command in bottom bar
