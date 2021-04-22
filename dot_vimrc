@@ -73,6 +73,7 @@ nnoremap <Leader>n :NERDTreeToggle<CR>
 nnoremap <Leader>f :Files<CR>
 nnoremap <Leader>b :Buffers<CR>
 nnoremap <Leader>g :Rg<CR>
+nnoremap <Leader>t :Tags<CR>
 
 " aw    -- ArgWrap
 nnoremap <Leader>aw :ArgWrap<CR>

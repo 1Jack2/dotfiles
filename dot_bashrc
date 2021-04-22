@@ -171,3 +171,4 @@ export NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node
 # and your ~/.bash_profile (for login shells):
 . /usr/share/autojump/autojump.sh
 
+source ~/.alacritty/bash_completion
