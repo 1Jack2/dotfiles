@@ -191,6 +191,10 @@ inoremap <Down>  <ESC>:echoe "Use j"<CR>
 "   PLUGIN CONFIG
 " =============================================================================
 
+" vim-commentary
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+autocmd FileType c,cpp,java setlocal commentstring=//\ %s
+
 " gutentags (borrow from [http://www.skywind.me/blog/archives/2084])
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " gutentags 搜索工程目录的标志，碰到这些文件/目录名就停止向上一级目录递归

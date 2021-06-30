@@ -18,9 +18,32 @@ nnoremap ]q :action GotoNextError<CR>
 nnoremap [q :action GotoPreviousError<CR>
 
 " === Leader ===
+" Borrow key mapping from https://github.com/danidiaz/miscellany/blob/master/windows/.ideavimrc
 let mapleader=","
 noremap \ ,
 map <leader>n :NERDTreeToggle<CR>
+
+" Jump to next/previous error, show error description
+" https://stackoverflow.com/questions/13346245/keyboard-shortcut-to-display-error-in-intellij
+map <Leader>e <Action>(ShowErrorDescription)
+" QuickJavaDoc - Quick Documentation (not only for java, all languages)
+map <Leader>d <Action>(QuickJavaDoc)
+" QuickImplementations - Quick Definition
+map <Leader>i <Action>(QuickImplementations)
+
+" Alt + F7 in idea.
+" Find usages in file is Ctrl + F7.
+" Alt + E, then F, then U (through the menu bar) also seems to work fine.
+map <Leader>f <Action>(FindUsages)
+
+" Alt + Insert in idea.
+map <Leader>g <Action>(Generate)
+
+" The default C-o and C-i behaviours have certain inconsistencies with
+" Vim which I can't quite pinpoint.
+" I'm using the default IntelliJ behaviours instead.
+map <C-o> <Action>(Back)
+map <C-i> <Action>(Forward)
 
 " === Search ===
 set ignorecase
@@ -29,6 +52,8 @@ set hlsearch
 set incsearch
 
 " === Miscellaneous ===
+nmap J gT
+nmap K gt
 set backspace=indent,eol,start
 
 " By default, Vim doesn't let you hide a buffer (i.e. have a buffer that isn't
