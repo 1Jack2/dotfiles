@@ -1,17 +1,24 @@
+let mapleader=","
+
 " === Plugins ===
+set easymotion
+set NERDTree
 set surround
 set multiple-cursors
 set commentary
 set argtextobj
-" set easymotion
 set textobj-entire
 set ReplaceWithRegister
-set NERDTree
+set exchange
+set highlightedyank
+set vim-paragraph-motion
+set indent-object
 
 " === Idea specific settings ===
 set ideajoin
 set ideastatusicon=gray
 set idearefactormode=keep
+set ideamarks " Sync IJ bookmarks and Vim marks
 
 " === Action ===
 nnoremap ]q :action GotoNextError<CR>
@@ -19,7 +26,6 @@ nnoremap [q :action GotoPreviousError<CR>
 
 " === Leader ===
 " Borrow key mapping from https://github.com/danidiaz/miscellany/blob/master/windows/.ideavimrc
-let mapleader=","
 noremap \ ,
 map <leader>n :NERDTreeToggle<CR>
 
@@ -79,3 +85,8 @@ set relativenumber
 set scrolloff=3
 
 set showcmd             " show command in bottom bar
+
+" === Plugins ===
+map <Space> <Plug>(easymotion-prefix)
+let g:argtextobj_pairs="[:],(:),<:>"
+let g:highlightedyank_highlight_duration = "400"

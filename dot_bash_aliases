@@ -1,4 +1,8 @@
+alias cp="cp -i"
+alias rm="rm -i"
 alias mv='mv -i'
 alias gs='git status'
 alias gb='git branch'
 alias fd='fdfind'
+# alias fuck='export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890'
+alias fuck='proxychains4'

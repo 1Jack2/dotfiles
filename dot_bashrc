@@ -88,9 +88,17 @@ fi
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
-alias ll='ls -alF'
+alias sl='ls'
+alias ll='ls -lF'
+alias lll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+if command -v exa > /dev/null; then
+alias l='exa'
+alias la='exa -a'
+alias ll='exa -l'
+alias lll='exa -la'
+fi
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -127,7 +135,7 @@ export EDITOR=vim
 
 # go
 # --------------------------------------------------------------------
-export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:/usr/local/go/bin:~/go/bin
 
 # fzf (https://github.com/junegunn/fzf)
 # --------------------------------------------------------------------
@@ -172,3 +180,6 @@ export NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node
 . /usr/share/autojump/autojump.sh
 
 source ~/.alacritty/bash_completion
+# Install Ruby Gems to ~/gems
+export GEM_HOME="$HOME/gems"
+export PATH="$HOME/gems/bin:$PATH"
