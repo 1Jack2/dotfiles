@@ -16,6 +16,7 @@ install.sh
 {{ if ne .chezmoi.os "windows" }}
 Documents
 {{ else }}
+.bashrc
 .bash_aliases
 .inputrc
 .oh-my-zsh
