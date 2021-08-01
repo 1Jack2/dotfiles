@@ -1,0 +1,18 @@
+[user]
+	name = {{ .fullname }}
+	email = {{ .email }}
+
+[github]
+    user = {{ .github_username }}
+
+[alias]
+	l = log --all --graph --decorate --oneline
+	ll = log --all --graph --decorate
+
+[core]
+	editor = vim
+
+# Allow local customizations in the .gitconfig_local file
+[include]
+	path = ~/.gitconfig_local
+

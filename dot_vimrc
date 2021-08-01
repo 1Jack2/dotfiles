@@ -72,6 +72,7 @@ Plug 'crusoexia/vim-monokai'
 Plug 'crusoexia/vim-monokai'
 Plug 'lifepillar/vim-solarized8'
 Plug 'NLKNguyen/papercolor-theme'
+Plug 'cocopon/iceberg.vim'
 
 " Other
 Plug 'wakatime/vim-wakatime'           " Wakatime time tracking
@@ -112,7 +113,7 @@ nnoremap <Leader>aw :ArgWrap<CR>
 "   BASIC
 " =============================================================================
 
-colorscheme PaperColor
+colorscheme iceberg
 
 " === Cursor ===
 " if exists('$TMUX')
@@ -368,7 +369,7 @@ autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
 set noshowmode
 " vista
 let g:lightline = {
-      \ 'colorscheme': 'PaperColor',
+      \ 'colorscheme': 'iceberg',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'readonly', 'filename', 'modified', 'method' ] ]

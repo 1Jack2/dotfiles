@@ -1,0 +1,18 @@
+{{- $sharedMachine := promptString "Is this a shared machine (y/n)" -}}
+{{- $fullname := "" -}}
+{{- $email := "" -}}
+{{- $githubUsername := "" -}}
+
+{{- if ne $sharedMachine "y" -}}
+    {{- $fullname = promptString "Full Name" -}}
+    {{- $email = promptString "Email" -}}
+    {{- $githubUsername = promptString "GitHub Username" -}}
+{{- end -}}
+
+[data]
+    shared_machine = {{ eq $sharedMachine "y" }}
+{{- if ne $sharedMachine "y" }}
+    fullname = "{{ $fullname }}"
+    email = "{{ $email }}"
+    github_username = "{{ $githubUsername }}"
+{{- end }}
