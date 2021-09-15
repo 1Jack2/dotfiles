@@ -124,12 +124,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# set vim keybinding
-# putting set editing-mode vi in your ~/.inputrc 
-# then bash will default to vi mode (i.e. set -o vi automatically) 
-# and ALL other readline based programs will also default to vi entry mode.
-# set -o vi
-set -o vi # keep this to fix fzf C-r keybinding
 export VISUAL=vi
 export EDITOR=vim
 
@@ -180,6 +174,14 @@ export NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node
 . /usr/share/autojump/autojump.sh
 
 source ~/.alacritty/bash_completion
+
 # Install Ruby Gems to ~/gems
 export GEM_HOME="$HOME/gems"
 export PATH="$HOME/gems/bin:$PATH"
+
+# https://github.com/trapd00r/LS_COLORS
+. "/home/jack/.local/share/lscolors.sh"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"

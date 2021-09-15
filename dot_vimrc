@@ -1,20 +1,16 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-set nocompatible " VI compatible mode is disabled so that VIM things work
-
 " =============================================================================
 "   PLUGINS
 " =============================================================================
 call plug#begin('~/.vim/plugged')
 
 " Search
-" Plug 'romainl/vim-cool'               " Disables highlight when search is done
-" Plug 'junegunn/vim-slash'			  " improve search highlight and star-search
-" Plug 'haya14busa/incsearch.vim'       " Better incremental search
+" Plug 'romainl/vim-cool'                             " Disables highlight when search is done
+" Plug 'junegunn/vim-slash'                           " improve search highlight and star-search
+" Plug 'haya14busa/incsearch.vim'                     " Better incremental search
 " Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " FZF plugin, makes Ctrl-P unnecessary
 " Plug 'junegunn/fzf.vim'
 Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' } " a modern generic interactive finder and dispatcher
-Plug 'nelstrom/vim-visual-star-search'							   " visual search
+Plug 'nelstrom/vim-visual-star-search'                        " visual search
 
 " Movement
 " Plug 'justinmk/vim-sneak'           " replaced by vim-easymotion
@@ -24,23 +20,28 @@ Plug 'takac/vim-hardtime'             " Disable arrow keys and similar
 Plug 'andymass/vim-matchup'           " Highlight corresponding blocks e.g. if - fi in bash
 
 " Text Manipulation
-Plug 'tpope/vim-unimpaired'           " Pairs of mappings
-Plug 'tpope/vim-repeat'               " Adds repeat thorugh . to other packages
-Plug 'tpope/vim-surround'             " Surround with parentheses & co
-Plug 'tpope/vim-commentary'           " To comment stuff out
-Plug 'tpope/vim-abolish'			  " easily search for, substitute, and abbreviate multiple variants of a word
-Plug 'tommcdo/vim-exchange'           " Easy text exchange operator for Vim
-Plug 'junegunn/vim-easy-align'        " Easier alignment
-Plug 'FooSoft/vim-argwrap'            " convert lists of arguments into blocks of arguments
+Plug 'tpope/vim-unimpaired'            " Pairs of mappings
+Plug 'tpope/vim-repeat'                " Adds repeat thorugh . to other packages
+Plug 'tpope/vim-surround'              " Surround with parentheses & co
+Plug 'tpope/vim-commentary'            " To comment stuff out
+Plug 'tpope/vim-abolish'               " easily search for, substitute, and abbreviate multiple variants of a word
+Plug 'tommcdo/vim-exchange'            " Easy text exchange operator for Vim
+Plug 'junegunn/vim-easy-align'         " Easier alignment
+Plug 'FooSoft/vim-argwrap'             " convert lists of arguments into blocks of arguments
+Plug 'vim-scripts/argtextobj.vim'      " arguments object
+Plug 'michaeljsmith/vim-indent-object' " indent object
+Plug 'kana/vim-textobj-user'           " create your own text objects without pain
+Plug 'glts/vim-textobj-comment'        " text object for comments
 
 " GUI enhancements
 Plug 'ryanoasis/vim-devicons'         " Add icons to your plugins
 Plug 'kristijanhusak/defx-icons'      " devicons for defx.nvm
 Plug 'itchyny/lightline.vim'          " Better Status Bar
+Plug 'ap/vim-buftabline'              " A well-integrated, low-configuration buffer list that lives in the tabline
+" Plug 'bagrat/vim-buffet'              " Brings you the IDE-like tabs into Vim, for easy navigation
 Plug 'mhinz/vim-startify'             " Better start screen
-" Plug 'preservim/nerdtree'             " File explorer
 Plug 'simnalamburt/vim-mundo'         " Gundo fork
-Plug 'junegunn/vim-peekaboo'		  " show register content
+Plug 'junegunn/vim-peekaboo'          " show register content
 Plug 'liuchengxu/vista.vim'           " View and search LSP symbols, tags in Vim/NeoVim.
 " a dark powered plugin for Neovim/Vim to browse files
 if has('nvim')
@@ -51,13 +52,16 @@ else
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 
-" Autocomplete
-" Semantic language support
+" Autocomplete | Syntax
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Make your Vim/Neovim as smart as VSCode.
+Plug 'kevinoid/vim-jsonc' " Vim syntax highlighting plugin for JSON with C-style comments.
+Plug 'rhysd/vim-grammarous' " grammar checker using *LanguageTool*.
 
-" Git GUI
+" Git
 Plug 'airblade/vim-gitgutter'         " Git gutter
 Plug 'tpope/vim-fugitive'             " Git interface
+Plug 'tpope/vim-rhubarb'              " If fugitive.vim is the Git, rhubarb.vim is the Hub
+Plug 'rhysd/git-messenger.vim'        " show the history of commits under the cursor
 Plug 'junegunn/gv.vim'                " TIG like navigation for vim
 " Plug 'xuyuanp/nerdtree-git-plugin'    " Show status of files in NerdTree
 Plug 'kristijanhusak/defx-git'        " Git status implementation for defx.nvim
@@ -75,6 +79,8 @@ Plug 'NLKNguyen/papercolor-theme'
 Plug 'cocopon/iceberg.vim'
 
 " Other
+Plug 'tpope/vim-eunuch'                " Vim sugar for the UNIX shell commands
+" Plug 'tpope/vim-rsi'                   " Readline mappings in insert mode and command line mode
 Plug 'wakatime/vim-wakatime'           " Wakatime time tracking
 Plug 'liuchengxu/vim-which-key'        " show keybindings in popup
 " Plug 'ludovicchabant/vim-gutentags'	   " manage tag files
@@ -82,32 +88,9 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
 Plug 't9md/vim-choosewin'              " Navigate to the window you choose
 Plug 'luochen1990/rainbow'             " Rainbow Parentheses Improved
 Plug 'yggdroot/indentline'             " Shows indentation levels
+Plug 'ntpeters/vim-better-whitespace'  " Highlight trailing whitespace characters
 
 call plug#end()
-
-" =============================================================================
-"   LEADER
-" =============================================================================
-let mapleader=","       " leader is ,
-noremap	\ ,				" swap , and \
-set showcmd             " show command in bottom bar
-
-nnoremap <silent> <leader> :WhichKey ','<CR>
-nmap <Leader>w <Plug>(choosewin)
-nnoremap <Leader>u :MundoToggle<CR>
-nnoremap <Leader>e :Defx<CR>
-" nnoremap <Leader>n :NERDTreeToggle<CR>
-nnoremap <Leader>t :Vista!!<CR> " Toggle vista view window
-nnoremap <Leader>f :Clap files<CR>
-
-" fzf
-" nnoremap <Leader>f :Files<CR>
-" nnoremap <Leader>b :Buffers<CR>
-" nnoremap <Leader>g :Rg<CR>
-" nnoremap <Leader>t :Tags<CR>
-
-" aw    -- ArgWrap
-nnoremap <Leader>aw :ArgWrap<CR>
 
 " =============================================================================
 "   BASIC
@@ -148,71 +131,48 @@ set hlsearch
 set incsearch
 
 " === Indentation ===
-" Use literal tabs
-set softtabstop=4 "Soft tab size
-set tabstop=4 " Tab size
-set shiftwidth=4 " Visual mode indentation (match tabstop)
-set noexpandtab " Don't use spaces
-
-" Inherit indentation from previous line
 set autoindent
+set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+
+filetype plugin indent on
+autocmd FileType html setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+autocmd FileType java setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+
+" === Tab ===
+" indicate tabs
+:nmap <leader>l :set invlist<cr>
+set list listchars=tab:>·,trail:·,extends:»,precedes:«,nbsp:×
 
 " === Miscellaneous ===
-" encoding
+set nocompatible
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
-
-" command complete
-set wildmenu
-set wildmode=full
-
-" command history
-set history=200
-
-" Turn on syntax highlighting.
-syntax on
-
-" Disable the default Vim startup message.
-set shortmess+=I
-
-set number
-set relativenumber
-
+set backspace=indent,eol,start
+set noerrorbells visualbell t_vb=
+set hidden
+set showcmd
 " Always show the status line at the bottom, even if you only have one window open.
 set laststatus=2
+set wildmenu
+set wildmode=full
+set history=200
+syntax on
+set shortmess+=I
+set number
+set relativenumber
+set mouse+=a
+set clipboard=unnamed
+set splitbelow
+set splitright
 
-" The backspace key has slightly unintuitive behavior by default. For example,
-" by default, you can't backspace before the insertion point set with 'i'.
-" This configuration makes backspace behave more reasonably, in that you can
-" backspace over anything.
-set backspace=indent,eol,start
-
-" By default, Vim doesn't let you hide a buffer (i.e. have a buffer that isn't
-" shown in any window) that has unsaved changes. This is to prevent you from "
-" forgetting about unsaved changes and then quitting e.g. via `:qa!`. We find
-" hidden buffers helpful enough to disable this protection. See `:help hidden`
-" for more information on this.
-set hidden
+let mapleader=","       " leader is ,
+noremap \ ,             " swap , and \
+nnoremap <silent> <leader> :WhichKey ','<CR>
 
 " Unbind some useless/annoying default key bindings.
 nmap Q <Nop> " 'Q' in normal mode enters Ex mode. You almost never want this.
 map <C-a> <Nop>
 map <C-x> <Nop>
-
-" Disable audible bell because it's annoying.
-set noerrorbells visualbell t_vb=
-
-" open new split panes to right and bottom, which feels more natural
-set splitbelow
-set splitright
-
-" quicker window movement
-" nnoremap <C-j> <C-w>j
-" nnoremap <C-k> <C-w>k
-" nnoremap <C-h> <C-w>h
-" nnoremap <C-l> <C-w>l
-
-" Enable mouse support.
-set mouse+=a
 
 " Try to prevent bad habits like using the arrow keys for movement.
 nnoremap <Left>  :echoe "Use h"<CR>
@@ -224,13 +184,75 @@ inoremap <Right> <ESC>:echoe "Use l"<CR>
 inoremap <Up>    <ESC>:echoe "Use k"<CR>
 inoremap <Down>  <ESC>:echoe "Use j"<CR>
 
+" Completion popup menu
+inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
+inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
+
+" Buffer switch
+nnoremap <C-H> :bnext<CR>
+nnoremap <C-L> :bprev<CR>
+
+" Save
+inoremap <C-s>     <C-O>:update<cr>
+nnoremap <C-s>     :update<cr>
+nnoremap <leader>s :update<cr>
+nnoremap <leader>w :update<cr>
+
+" <tab> / <s-tab> | Circular windows navigation
+nnoremap <tab>   <c-w>w
+nnoremap <S-tab> <c-w>W
+
+" Moving lines
+nnoremap <silent> <C-k> :move-2<cr>
+nnoremap <silent> <C-j> :move+<cr>
+xnoremap <silent> <C-k> :move-2<cr>gv
+xnoremap <silent> <C-j> :move'>+<cr>gv
+
+" Readline-style key bindings in command-line (excerpt from rsi.vim)
+cnoremap        <C-A> <Home>
+cnoremap        <C-B> <Left>
+cnoremap <expr> <C-D> getcmdpos()>strlen(getcmdline())?"\<Lt>C-D>":"\<Lt>Del>"
+cnoremap <expr> <C-F> getcmdpos()>strlen(getcmdline())?&cedit:"\<Lt>Right>"
+cnoremap        <M-b> <S-Left>
+cnoremap        <M-f> <S-Right>
+silent! exe "set <S-Left>=\<Esc>b"
+silent! exe "set <S-Right>=\<Esc>f"
+
+" =============================================================================
+"   LEADER
+" =============================================================================
+nmap <Leader>cw <Plug>(choosewin)
+nnoremap <Leader>u :MundoToggle<CR>
+nnoremap <Leader>e :Defx<CR>
+" nnoremap <Leader>n :NERDTreeToggle<CR>
+nnoremap <Leader>t :Vista!!<CR> " Toggle vista view window
+nnoremap <Leader>f :Clap files<CR>
+nmap <Leader>gm <Plug>(git-messenger)
+
+
+" fzf
+" nnoremap <Leader>f :Files<CR>
+" nnoremap <Leader>b :Buffers<CR>
+" nnoremap <Leader>g :Rg<CR>
+" nnoremap <Leader>t :Tags<CR>
+
+" aw    -- ArgWrap
+nnoremap <Leader>aw :ArgWrap<CR>
+
+" easy-align
+xmap <Leader>al <Plug>(EasyAlign)
+nmap <Leader>al <Plug>(EasyAlign)
+
 " =============================================================================
 "   PLUGIN CONFIG
 " =============================================================================
-nnoremap <C-p> :Clap<CR>
+" git-messenger
+let g:git_messenger_no_default_mappings = v:true
+let g:git_messenger_always_into_popup = v:true
 
-" defx
+" vim-clap
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <C-p> :Clap<CR>
 
 " defx
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -311,7 +333,7 @@ endfunction
 
 " rainbow
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:rainbow_active = 1 " set to 0 if you want to enable it later via :RainbowToggle
+let g:rainbow_active = 0 " set to 0 if you want to enable it later via :RainbowToggle
 
 " markdown-preview
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -367,14 +389,19 @@ autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " --INSERT-- is unncessary because of lightline
 set noshowmode
-" vista
+
+" vista vim-buffet
 let g:lightline = {
       \ 'colorscheme': 'iceberg',
+      \ 'enable': {
+      \   'tabline': 0
+      \ },
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'readonly', 'filename', 'modified', 'method' ] ]
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified', 'method' ] ]
       \ },
       \ 'component_function': {
+      \   'gitbranch': 'FugitiveHead',
       \   'method': 'NearestMethodOrFunction'
       \ },
       \ }
@@ -388,8 +415,11 @@ let g:EasyMotion_use_upper = 1
 let g:EasyMotion_keys = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ;'
 " Turn on case-insensitive feature
 let g:EasyMotion_smartcase = 1
-" replace vim-sneak
 nmap s <Plug>(easymotion-overwin-f2)
+map <Space>h <Plug>(easymotion-linebackward)
+map <Space>j <Plug>(easymotion-j)
+map <Space>k <Plug>(easymotion-k)
+map <Space>l <Plug>(easymotion-lineforward)
 
 " incsearch
 " map / <Plug>(incsearch-forward)
@@ -411,6 +441,7 @@ let g:coc_global_extensions = [
             \ 'coc-pyright',
             \ 'coc-snippets',
             \ 'coc-texlab',
+            \ 'coc-spell-checker',
             \ ]
 
 " Set internal encoding of vim, not needed on neovim, since coc.nvim using some
