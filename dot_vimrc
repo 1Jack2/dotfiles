@@ -89,6 +89,7 @@ Plug 't9md/vim-choosewin'              " Navigate to the window you choose
 Plug 'luochen1990/rainbow'             " Rainbow Parentheses Improved
 Plug 'yggdroot/indentline'             " Shows indentation levels
 Plug 'ntpeters/vim-better-whitespace'  " Highlight trailing whitespace characters
+Plug 'subnut/nvim-ghost.nvim', {'do': ':call nvim_ghost#installer#install()'} " neovim-only plugin for GhostText
 
 call plug#end()
 
@@ -163,6 +164,7 @@ set shortmess+=I
 set number
 set relativenumber
 set mouse+=a
+source $VIMRUNTIME/mswin.vim
 set clipboard=unnamed
 set splitbelow
 set splitright
@@ -593,3 +595,10 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 " Resume latest coc list.
 " nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
+" nvim-ghost
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+augroup nvim_ghost_user_autocommands
+  au User www.reddit.com,www.stackoverflow.com set filetype=markdown
+  au User www.reddit.com,www.github.com set filetype=markdown
+  au User *github.com set filetype=markdown
+augroup END

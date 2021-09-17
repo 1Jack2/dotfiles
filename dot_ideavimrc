@@ -58,8 +58,8 @@ set hlsearch
 set incsearch
 
 " === Miscellaneous ===
-nmap J gT
-nmap K gt
+nmap <C-h> gT
+nmap <C-l> gt
 set backspace=indent,eol,start
 
 " By default, Vim doesn't let you hide a buffer (i.e. have a buffer that isn't
