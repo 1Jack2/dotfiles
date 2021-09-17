@@ -85,7 +85,7 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # colored GCC warnings and errors
-#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
 alias sl='ls'
@@ -126,6 +126,20 @@ fi
 
 export VISUAL=vi
 export EDITOR=vim
+
+# more color
+# --------------------------------------------------------------------
+# ls
+# https://github.com/trapd00r/LS_COLORS
+. "/home/jack/.local/share/lscolors.sh"
+# less
+export LESS_TERMCAP_mb=$'\e[1;32m'
+export LESS_TERMCAP_md=$'\e[1;32m'
+export LESS_TERMCAP_me=$'\e[0m'
+export LESS_TERMCAP_se=$'\e[0m'
+export LESS_TERMCAP_so=$'\e[01;33m'
+export LESS_TERMCAP_ue=$'\e[0m'
+export LESS_TERMCAP_us=$'\e[1;4;31m'
 
 # go
 # --------------------------------------------------------------------
@@ -175,12 +189,11 @@ export NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node
 
 source ~/.alacritty/bash_completion
 
+# Ruby
+# --------------------------------------------------------------------
 # Install Ruby Gems to ~/gems
 export GEM_HOME="$HOME/gems"
 export PATH="$HOME/gems/bin:$PATH"
-
-# https://github.com/trapd00r/LS_COLORS
-. "/home/jack/.local/share/lscolors.sh"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"

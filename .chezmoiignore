@@ -16,17 +16,13 @@ install.sh
 {{ if ne .chezmoi.os "windows" }}
 Documents
 {{ else }}
-.bashrc
+.alacritty.yml
 .bash_aliases
+.bashrc
+.gitconfig
 .inputrc
-.oh-my-zsh
-.p10k.zsh
+.ssh
 .ssh/authorized_keys
-.ssh/id_rsa
-.ssh/id_rsa.pub
 .tmux.conf
-.vim
-.vimrc
-.zshrc
 {{ end }}
 
