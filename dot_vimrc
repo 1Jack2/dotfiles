@@ -186,8 +186,8 @@ inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
 inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
 
 " Buffer switch
-nnoremap <C-H> :bnext<CR>
-nnoremap <C-L> :bprev<CR>
+nnoremap <C-L> :bnext<CR>
+nnoremap <C-H> :bprev<CR>
 
 " Save
 inoremap <C-s>     <C-O>:update<cr>
