@@ -85,6 +85,7 @@ Plug 'tpope/vim-eunuch'                " Vim sugar for the UNIX shell commands
 Plug 'wakatime/vim-wakatime'           " Wakatime time tracking
 Plug 'liuchengxu/vim-which-key'        " show keybindings in popup
 " Plug 'ludovicchabant/vim-gutentags'	   " manage tag files
+Plug 'ellisonleao/glow.nvim'           " A glow preview directly in your neovim buffer
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}	" markdown preview
 Plug 't9md/vim-choosewin'              " Navigate to the window you choose
 Plug 'luochen1990/rainbow'             " Rainbow Parentheses Improved

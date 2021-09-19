@@ -2,8 +2,8 @@
 #
 # My custom .bashrc
 
-export VISUAL=vi
-export EDITOR=vim
+export VISUAL=nvim
+export EDITOR=nvim
 
 alias cp="cp -i"
 alias rm="rm -i"
