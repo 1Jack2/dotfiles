@@ -9,8 +9,11 @@ call plug#begin('~/.vim/plugged')
 " Plug 'haya14busa/incsearch.vim'                     " Better incremental search
 " Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " FZF plugin, makes Ctrl-P unnecessary
 " Plug 'junegunn/fzf.vim'
-Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' } " a modern generic interactive finder and dispatcher
+" Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' } " a modern generic interactive finder and dispatcher
 Plug 'nelstrom/vim-visual-star-search'                        " visual search
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 
 " Movement
 " Plug 'justinmk/vim-sneak'           " replaced by vim-easymotion
@@ -56,6 +59,7 @@ endif
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Make your Vim/Neovim as smart as VSCode.
 Plug 'kevinoid/vim-jsonc' " Vim syntax highlighting plugin for JSON with C-style comments.
 Plug 'rhysd/vim-grammarous' " grammar checker using *LanguageTool*.
+" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 
 " Git
 Plug 'airblade/vim-gitgutter'         " Git gutter
@@ -91,7 +95,8 @@ Plug 't9md/vim-choosewin'              " Navigate to the window you choose
 Plug 'luochen1990/rainbow'             " Rainbow Parentheses Improved
 Plug 'yggdroot/indentline'             " Shows indentation levels
 Plug 'ntpeters/vim-better-whitespace'  " Highlight trailing whitespace characters
-Plug 'subnut/nvim-ghost.nvim', {'do': ':call nvim_ghost#installer#install()'} " neovim-only plugin for GhostText
+" Plug 'subnut/nvim-ghost.nvim', {'do': ':call nvim_ghost#installer#install()'} " neovim-only plugin for GhostText
+Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 
 call plug#end()
 
@@ -99,7 +104,16 @@ call plug#end()
 "   BASIC
 " =============================================================================
 
-" To quickly toggle between them, use vim-unimpaired's keymap cob
+" Color
+if has("termguicolors")
+    " fix bug for vim
+    " set t_8f=^[[38;2;%lu;%lu;%lum
+    " set t_8b=^[[48;2;%lu;%lu;%lum
+
+    " enable true color
+    set termguicolors
+endif
+" To quickly toggle between them, use vim-unimpaired's keymap yob
 " set background=light
 " colorscheme PaperColor
 set background=dark
@@ -224,8 +238,14 @@ nnoremap <Leader>u :MundoToggle<CR>
 nnoremap <Leader>e :Defx<CR>
 " nnoremap <Leader>n :NERDTreeToggle<CR>
 nnoremap <Leader>t :Vista!!<CR> " Toggle vista view window
-nnoremap <Leader>f :Clap files<CR>
+" nnoremap <Leader>f :Clap files<CR>
 nmap <Leader>gm <Plug>(git-messenger)
+" Find files using Telescope command-line sugar.
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
 
 
 " fzf
@@ -250,7 +270,7 @@ let g:git_messenger_always_into_popup = v:true
 
 " vim-clap
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap <C-p> :Clap<CR>
+" nnoremap <C-p> :Clap<CR>
 
 " defx
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -600,9 +620,16 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 " nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 " nvim-ghost
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"augroup nvim_ghost_user_autocommands
+"  au User www.reddit.com,www.stackoverflow.com set filetype=markdown
+"  au User www.reddit.com,www.github.com set filetype=markdown
+"  au User *github.com set filetype=markdown
+"augroup END
+
+" firenvim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-augroup nvim_ghost_user_autocommands
-  au User www.reddit.com,www.stackoverflow.com set filetype=markdown
-  au User www.reddit.com,www.github.com set filetype=markdown
-  au User *github.com set filetype=markdown
+augroup nvim_firenvim_autocommands
+  au BufEnter github.com_*.txt set filetype=markdown
 augroup END
+
