@@ -241,6 +241,7 @@ nnoremap <Leader>t :Vista!!<CR> " Toggle vista view window
 " nnoremap <Leader>f :Clap files<CR>
 nmap <Leader>gm <Plug>(git-messenger)
 " Find files using Telescope command-line sugar.
+nnoremap <C-p> :Telescope<CR>
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
