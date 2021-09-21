@@ -13,6 +13,8 @@ set exchange
 set highlightedyank
 set vim-paragraph-motion
 set indent-object
+" IdeaVimExtension plugin
+set keep-english-in-normal-and-restore-in-insert
 
 " === Idea specific settings ===
 set ideajoin
@@ -58,27 +60,48 @@ set hlsearch
 set incsearch
 
 " === Miscellaneous ===
+set noerrorbells visualbell t_vb=
+set clipboard+=unnamed
 nmap <C-h> gT
 nmap <C-l> gt
 set backspace=indent,eol,start
-
-" By default, Vim doesn't let you hide a buffer (i.e. have a buffer that isn't
-" shown in any window) that has unsaved changes. This is to prevent you from "
-" forgetting about unsaved changes and then quitting e.g. via `:qa!`. We find
-" hidden buffers helpful enough to disable this protection. See `:help hidden`
-" for more information on this.
 set hidden
+set showcmd
+" Always show the status line at the bottom, even if you only have one window open.
+set laststatus=2
+set wildmenu
+set wildmode=full
+set history=200
+syntax on
+set shortmess+=I
+set number
+set relativenumber
+set mouse+=a
+source $VIMRUNTIME/mswin.vim
+set clipboard=unnamed
+set splitbelow
+set splitrigh
 
 " Unbind some useless/annoying default key bindings.
 nmap Q <Nop> " 'Q' in normal mode enters Ex mode. You almost never want this.
 map <C-a> <Nop>
 map <C-x> <Nop>
 
-set showmode
-set history=200
+" Completion popup menu
+inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
+inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
 
-set number
-set relativenumber
+" Save
+inoremap <C-s>     <C-O>:w<cr>
+nnoremap <C-s>     :w<cr>
+nnoremap <leader>s :w<cr>
+nnoremap <leader>w :w<cr>
+
+" Moving lines
+nnoremap <silent> <C-k> :move-2<cr>
+nnoremap <silent> <C-j> :move+<cr>
+xnoremap <silent> <C-k> :move-2<cr>gv
+xnoremap <silent> <C-j> :move'>+<cr>gv
 
 " Show a few lines of context around the cursor.  Note that this makes the
 " text scroll if you mouse-click near the start or end of the window.
@@ -88,5 +111,6 @@ set showcmd             " show command in bottom bar
 
 " === Plugins ===
 map <Space> <Plug>(easymotion-prefix)
+let g:EasyMotion_keys = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ;'
 let g:argtextobj_pairs="[:],(:),<:>"
 let g:highlightedyank_highlight_duration = "400"
