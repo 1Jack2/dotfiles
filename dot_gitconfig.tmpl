@@ -11,7 +11,9 @@
 
 [core]
     editor = nvim
+{{ if eq .chezmoi.os "windows" }}
     autocrlf = true
+{{ end }}
 
 # Allow local customizations in the .gitconfig_local file
 [include]
