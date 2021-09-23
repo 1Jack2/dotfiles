@@ -16,12 +16,6 @@ set indent-object
 " IdeaVimExtension plugin
 set keep-english-in-normal-and-restore-in-insert
 
-" === Idea specific settings ===
-set ideajoin
-set ideastatusicon=gray
-set idearefactormode=keep
-set ideamarks " Sync IJ bookmarks and Vim marks
-
 " === Action ===
 nnoremap ]q :action GotoNextError<CR>
 nnoremap [q :action GotoPreviousError<CR>
@@ -103,10 +97,6 @@ nnoremap <silent> <C-j> :move+<cr>
 xnoremap <silent> <C-k> :move-2<cr>gv
 xnoremap <silent> <C-j> :move'>+<cr>gv
 
-" Show a few lines of context around the cursor.  Note that this makes the
-" text scroll if you mouse-click near the start or end of the window.
-set scrolloff=3
-
 set showcmd             " show command in bottom bar
 
 " === Plugins ===
@@ -114,3 +104,23 @@ map <Space> <Plug>(easymotion-prefix)
 let g:EasyMotion_keys = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ;'
 let g:argtextobj_pairs="[:],(:),<:>"
 let g:highlightedyank_highlight_duration = "400"
+
+" === Jetbrains IDE specific settings(not copy from .vimrc) ===
+" copy paste cut
+vnoremap <C-c> "+y
+map <C-v>       "+gP
+vnoremap <C-x> "+x
+" Show a few lines of context around the cursor.  Note that this makes the
+" text scroll if you mouse-click near the start or end of the window.
+set scrolloff=3
+" Ask help from nvim ;)
+" https://www.reddit.com/r/IntelliJIDEA/comments/dphwrd/how_to_configure_ideavim_shortcut_to_open_file_in/
+nmap ,v :action Tool_External Tools_nvim<cr>
+
+
+" === Idea specific settings ===
+set clipboard+=ideaput
+set ideajoin
+set ideastatusicon=gray
+set idearefactormode=keep
+set ideamarks " Sync IJ bookmarks and Vim marks
