@@ -1,0 +1,166 @@
+{
+    "editor.fontSize": 16,
+    "editor.fontLigatures": false,
+    "editor.fontFamily": "'JetBrainsMono NF', 'Courier New', monospace",
+    "editor.formatOnSave": true,
+    "editor.fontWeight": "normal",
+    "explorer.confirmDelete": false,
+    "workbench.iconTheme": "material-icon-theme",
+    "C_Cpp.updateChannel": "Insiders",
+    "java.configuration.checkProjectSettingsExclusions": false,
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "go.formatTool": "goimports",
+    "java.semanticHighlighting.enabled": true,
+    "remote.SSH.remotePlatform": {
+        "myubuntu": "linux",
+        "myUbuntu": "linux",
+        "vm0": "linux"
+    },
+    "C_Cpp.clang_format_fallbackStyle": "Google",
+    "settingsSync.ignoredSettings": [
+        "vim.autoSwitchInputMethod.enable"
+    ],
+    "workbench.colorTheme": "Nord",
+    "vim.autoSwitchInputMethod.defaultIM": "1033",
+    "vim.autoSwitchInputMethod.obtainIMCmd": "D:\\bin\\im-select.exe",
+    "vim.autoSwitchInputMethod.switchIMCmd": "D:\\bin\\im-select.exe {im}",
+    "vim.leader": " ",
+    "search.smartCase": true,
+    "python.languageServer": "Microsoft",
+    "vim.smartRelativeLine": true,
+    "html.autoClosingTags": false,
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter.notebook.ipynb"
+    },
+    "vim.camelCaseMotion.enable": true,
+    "vim.hlsearch": true,
+    "vim.showMarksInGutter": true,
+    "vim.useSystemClipboard": true,
+    "vim.visualstar": true,
+    "vim.highlightedyank.enable": true,
+    "vim.highlightedyank.duration": 400,
+    "vim.normalModeKeyBindingsNonRecursive": [
+        // swap \ and , not work :-(, so set <leader> = <space>
+        // {
+        //     "before": [
+        //         "\\"
+        //     ],
+        //     "after": [
+        //         ",",
+        //     ],
+        // },
+        // emulate vim-sneak
+        {
+            "before": [
+                "s",
+            ],
+            "after": [
+                " ",
+                " ",
+                "2",
+                "s"
+            ]
+        },
+        {
+            "before": [
+                "ctrl+h"
+            ],
+            "commands": [
+                "workbench.action.previousEditor"
+            ]
+        },
+        {
+            "before": [
+                "ctrl+l"
+            ],
+            "commands": [
+                "workbench.action.nextEditor"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "f"
+            ],
+            "commands": [
+                "revealInExplorer",
+            ],
+        },
+        {
+            "before": [
+                "<leader>",
+                "r",
+                "e"
+            ],
+            "commands": [
+                "editor.action.rename"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "r",
+                "f"
+            ],
+            "commands": [
+                "fileutils.renameFile"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "o",
+                "g"
+            ],
+            "commands": [
+                "workbench.action.showAllSymbols"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "o",
+                "o"
+            ],
+            "commands": [
+                "workbench.action.showEditorsInActiveGroup"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "o",
+                "p"
+            ],
+            "commands": [
+                "workbench.action.quickOpen"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "p"
+            ],
+            "commands": [
+                "workbench.action.showCommands"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "t"
+            ],
+            "commands": [
+                "workbench.action.showAllSymbols"
+            ]
+        }
+    ],
+    "cmake.configureOnOpen": true,
+    "vim.easymotion": true,
+    "vim.sneakUseIgnorecaseAndSmartcase": true,
+    "vim.sneak": true,
+    "vim.autoSwitchInputMethod.enable": true,
+    "languageToolLinter.serviceType": "public",
+    "editor.renderWhitespace": "trailing",
+}
