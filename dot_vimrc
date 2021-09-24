@@ -35,6 +35,7 @@ Plug 'vim-scripts/argtextobj.vim'      " arguments object
 Plug 'michaeljsmith/vim-indent-object' " indent object
 Plug 'kana/vim-textobj-user'           " create your own text objects without pain
 Plug 'glts/vim-textobj-comment'        " text object for comments
+Plug 'mg979/vim-visual-multi', {'branch': 'master'} " multi cursor
 
 " GUI enhancements
 Plug 'ryanoasis/vim-devicons'         " Add icons to your plugins
@@ -107,12 +108,23 @@ Plug 'yggdroot/indentline'             " Shows indentation levels
 Plug 'ntpeters/vim-better-whitespace'  " Highlight trailing whitespace characters
 " Plug 'subnut/nvim-ghost.nvim', {'do': ':call nvim_ghost#installer#install()'} " neovim-only plugin for GhostText
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+Plug 'dansomething/vim-hackernews'     " Browse Hacker News inside Vim
+Plug 'voldikss/vim-translator'         " Asynchronous translating plugin for Vim/Neovim
 
 call plug#end()
 
 " =============================================================================
 "   BASIC
 " =============================================================================
+
+" GUI
+if has("win32")
+    set guifont=FiraCode\ Nerd\ Font\ Mono:h14
+    set guifontwide=Microsoft\ YaHei:h14.5
+elseif has("linux")
+    set guifont=FiraCode\ Nerd\ Font\ Mono:h14
+    " TODO
+end
 
 " Color
 if has("termguicolors")
@@ -219,10 +231,6 @@ inoremap <C-s>     <C-O>:update<cr>
 nnoremap <C-s>     :update<cr>
 nnoremap <leader>s :update<cr>
 nnoremap <leader>w :update<cr>
-
-" <tab> / <s-tab> | Circular windows navigation
-nnoremap <tab>   <c-w>w
-nnoremap <S-tab> <c-w>W
 
 " Moving lines
 nnoremap <silent> <C-k> :move-2<cr>
@@ -678,7 +686,13 @@ call wilder#set_option('renderer', wilder#renderer_mux({
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if exists('g:started_by_firenvim')
     set laststatus=0
-    set guifont=JetBrainsMono\ NF:h24
+    if has("win32")
+        set guifont=FiraCode\ Nerd\ Font:h24
+        set guifontwide=Microsoft\ YaHei:h24
+    elseif has("linux")
+        set guifont=FiraCode\ Nerd\ Font\ Mono:h24
+        " TODO
+end
 endif
 augroup nvim_firenvim_autocommands
     au BufEnter github.com_*.txt set filetype=markdown

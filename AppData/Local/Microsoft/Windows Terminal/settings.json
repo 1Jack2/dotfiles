@@ -97,10 +97,8 @@
             "colorScheme": "nord",
             "cursorColor": "#E68CCB",
             "cursorShape": "filledBox",
-            // "fontFace": "JetBrainsMono Nerd Font",
-            // "fontSize": 14,
             "font": {
-                "face": "JetBrainsMono NF",
+                "face": "FiraCode Nerd Font Mono",
                 "size": 14,
                 "weight": "normal",
                 "features": {
