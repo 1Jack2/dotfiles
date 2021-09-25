@@ -18,6 +18,7 @@ Documents
 AppData
 {{ else }}
 .config/nvim
+.config/gitui
 .alacritty.yml
 .bash_aliases
 .bashrc
