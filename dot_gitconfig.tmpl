@@ -11,9 +11,11 @@
 
 [core]
     editor = nvim
-{{ if eq .chezmoi.os "windows" }}
+{{- if eq .chezmoi.os "windows" }}
     autocrlf = true
-{{ end }}
+{{- else }}
+    autocrlf = input
+{{- end }}
 
 # Allow local customizations in the .gitconfig_local file
 [include]

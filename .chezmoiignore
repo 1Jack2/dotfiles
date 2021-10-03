@@ -22,7 +22,6 @@ AppData
 .alacritty.yml
 .bash_aliases
 .bashrc
-.gitconfig
 .inputrc
 .ssh
 .ssh/authorized_keys

@@ -130,18 +130,23 @@
                 "name": "Azure Cloud Shell",
                 "source": "Windows.Terminal.Azure"
             },
-            {
-                "commandline": "D:\\Program Files\\Git\\bin\\bash.exe",
-                "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b7}",
-                "hidden": false,
-                "icon": "http://docs.hexcode.cn/git.png",
-                "name": "git bash"
-            },
+            // {
+            //     "commandline": "D:\\Program Files\\Git\\bin\\bash.exe",
+            //     "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b7}",
+            //     "hidden": false,
+            //     "icon": "http://docs.hexcode.cn/git.png",
+            //     "name": "git bash"
+            // },
             {
                 "commandline": "powershell.exe",
                 "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
                 "hidden": false,
                 "name": "Windows PowerShell"
+            },
+            {
+                "guid": "{2ece5bfe-50ed-5f3a-ab87-5cd4baafed2b}",
+                "name": "Git Bash",
+                "source": "Git"
             }
         ]
     },
