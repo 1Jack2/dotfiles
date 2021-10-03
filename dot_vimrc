@@ -21,6 +21,7 @@ Plug 'easymotion/vim-easymotion'
 " Plug 'haya14busa/incsearch-easymotion.vim'
 Plug 'takac/vim-hardtime'             " Disable arrow keys and similar
 Plug 'andymass/vim-matchup'           " Highlight corresponding blocks e.g. if - fi in bash
+Plug 'unblevable/quick-scope'         " An always-on highlight for a unique character in every word on a line to help you use f, F and family.
 
 " Text Manipulation
 Plug 'tpope/vim-unimpaired'            " Pairs of mappings
