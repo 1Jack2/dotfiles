@@ -17,29 +17,34 @@ set indent-object
 set keep-english-in-normal-and-restore-in-insert
 
 " === Action ===
-nnoremap ]q :action GotoNextError<CR>
-nnoremap [q :action GotoPreviousError<CR>
+nnoremap ]g :action GotoNextError<CR>
+nnoremap [g :action GotoPreviousError<CR>
+nnoremap K :action QuickJavaDoc<CR>
+nnoremap gi :action GotoImplementation<CR>
+nnoremap gy :action GotoTypeDeclaration<CR>
+nnoremap gr :action FindUsages<CR>
+nnoremap <c-p> :action SearchEverywhere<CR>
 
 " === Leader ===
 " Borrow key mapping from https://github.com/danidiaz/miscellany/blob/master/windows/.ideavimrc
 noremap \ ,
-map <leader>n :NERDTreeToggle<CR>
+map <leader>e :NERDTreeToggle<CR>
 
 " Jump to next/previous error, show error description
 " https://stackoverflow.com/questions/13346245/keyboard-shortcut-to-display-error-in-intellij
-map <Leader>e <Action>(ShowErrorDescription)
-" QuickJavaDoc - Quick Documentation (not only for java, all languages)
-map <Leader>d <Action>(QuickJavaDoc)
+map <Leader>se <Action>(ShowErrorDescription)
 " QuickImplementations - Quick Definition
-map <Leader>i <Action>(QuickImplementations)
-
-" Alt + F7 in idea.
-" Find usages in file is Ctrl + F7.
-" Alt + E, then F, then U (through the menu bar) also seems to work fine.
-map <Leader>f <Action>(FindUsages)
+map <Leader>si <Action>(QuickImplementations)
+" tags
+map <Leader>t <Action>(FileStructurePopup)
+nnoremap <Leader>sr :action ShowUsages<CR>
 
 " Alt + Insert in idea.
 map <Leader>g <Action>(Generate)
+
+" Refactor
+nnoremap <Leader>re :action RefactoringMenu<CR>
+nnoremap <Leader>rn :action RenameElement<CR>
 
 " The default C-o and C-i behaviours have certain inconsistencies with
 " Vim which I can't quite pinpoint.
@@ -84,12 +89,6 @@ map <C-x> <Nop>
 " Completion popup menu
 inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
 inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
-
-" Save
-inoremap <C-s>     <C-O>:w<cr>
-nnoremap <C-s>     :w<cr>
-nnoremap <leader>s :w<cr>
-nnoremap <leader>w :w<cr>
 
 " Moving lines
 nnoremap <silent> <C-k> :move-2<cr>

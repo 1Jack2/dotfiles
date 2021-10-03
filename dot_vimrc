@@ -226,12 +226,6 @@ inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
 nnoremap <C-L> :bnext<CR>
 nnoremap <C-H> :bprev<CR>
 
-" Save
-inoremap <C-s>     <C-O>:update<cr>
-nnoremap <C-s>     :update<cr>
-nnoremap <leader>s :update<cr>
-nnoremap <leader>w :update<cr>
-
 " Moving lines
 nnoremap <silent> <C-k> :move-2<cr>
 nnoremap <silent> <C-j> :move+<cr>
