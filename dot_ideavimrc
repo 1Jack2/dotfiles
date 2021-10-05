@@ -17,33 +17,54 @@ set indent-object
 set keep-english-in-normal-and-restore-in-insert
 
 " === Action ===
-nnoremap ]g :action GotoNextError<CR>
-nnoremap [g :action GotoPreviousError<CR>
+nnoremap ]e :action GotoNextError<CR>
+nnoremap [e :action GotoPreviousError<CR>
 nnoremap K :action QuickJavaDoc<CR>
-nnoremap gi :action GotoImplementation<CR>
-nnoremap gy :action GotoTypeDeclaration<CR>
-nnoremap gr :action FindUsages<CR>
+nnoremap gi :action GotoImplementation<cr>
+nnoremap gr :action FindUsages<cr>
 nnoremap <c-p> :action SearchEverywhere<CR>
 
 " === Leader ===
 " Borrow key mapping from https://github.com/danidiaz/miscellany/blob/master/windows/.ideavimrc
 noremap \ ,
+
+" Choose Window using Switcher
+map <Leader>wc :action Switcher<CR>
+
+" Hide tool window
+map <Leader>zz :action HideActiveWindow<CR>
+
+" NERDTree
 map <leader>e :NERDTreeToggle<CR>
 
-" Jump to next/previous error, show error description
-" https://stackoverflow.com/questions/13346245/keyboard-shortcut-to-display-error-in-intellij
+" ReplaceWithRegister
+nmap <Leader>p  <Plug>ReplaceWithRegisterOperator
+nmap <Leader>pp <Plug>ReplaceWithRegisterLine
+xmap <Leader>p  <Plug>ReplaceWithRegisterVisual
+
+" Generate
+map <Leader>ge <Action>(Generate)
+
+" SurroundWith
+map <Leader>wr :action SurroundWith<CR>
+
+" git
+map <Leader>gg :action Git.Menu<CR>
+
+" not working
+" map [g :action NextDiff<CR>
+" map ]g :action PreviousDiff<CR>
+
+" show
 map <Leader>se <Action>(ShowErrorDescription)
-" QuickImplementations - Quick Definition
 map <Leader>si <Action>(QuickImplementations)
-" tags
-map <Leader>t <Action>(FileStructurePopup)
 nnoremap <Leader>sr :action ShowUsages<CR>
 
-" Alt + Insert in idea.
-map <Leader>g <Action>(Generate)
+" tags
+map <Leader>t <Action>(FileStructurePopup)
 
 " Refactor
-nnoremap <Leader>re :action RefactoringMenu<CR>
+nnoremap <Leader>rr :action RefactoringMenu<CR>
 nnoremap <Leader>rn :action RenameElement<CR>
 
 " The default C-o and C-i behaviours have certain inconsistencies with
@@ -107,8 +128,9 @@ let g:highlightedyank_highlight_duration = "400"
 " === Jetbrains IDE specific settings(not copy from .vimrc) ===
 " copy paste cut
 vnoremap <C-c> "+y
-map <C-v>       "+gP
-vnoremap <C-x> "+x
+vnoremap <C-v> "+gP
+inoremap <C-v> <C-o>"+gP
+
 " Show a few lines of context around the cursor.  Note that this makes the
 " text scroll if you mouse-click near the start or end of the window.
 set scrolloff=3
@@ -122,4 +144,5 @@ set clipboard+=ideaput
 set ideajoin
 set ideastatusicon=gray
 set idearefactormode=keep
-set ideamarks " Sync IJ bookmarks and Vim marks
+" Sync IJ bookmarks and Vim marks
+set ideamarks

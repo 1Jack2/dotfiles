@@ -163,4 +163,5 @@
     "vim.autoSwitchInputMethod.enable": true,
     "languageToolLinter.serviceType": "public",
     "editor.renderWhitespace": "trailing",
+    "markdown-preview-enhanced.previewTheme": "solarized-dark.css",
 }
