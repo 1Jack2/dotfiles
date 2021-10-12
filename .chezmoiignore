@@ -4,6 +4,10 @@ install.sh
 *.deb
 *.tar.gz
 
+{{ if ne .shared_machine false }}
+.gitconfig
+{{ end }}
+
 {{ if ne .chezmoi.os "darwin" }}
 .config/jack
 .hammerspoon

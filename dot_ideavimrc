@@ -1,3 +1,4 @@
+" https://github.com/JetBrains/ideavim
 let mapleader=","
 
 " === Plugins ===
@@ -13,29 +14,29 @@ set exchange
 set highlightedyank
 set vim-paragraph-motion
 set indent-object
+set matchit
 " IdeaVimExtension plugin
 set keep-english-in-normal-and-restore-in-insert
 
 " === Action ===
-nnoremap ]e :action GotoNextError<CR>
-nnoremap [e :action GotoPreviousError<CR>
-nnoremap K :action QuickJavaDoc<CR>
-nnoremap gi :action GotoImplementation<cr>
-nnoremap gr :action FindUsages<cr>
-nnoremap <c-p> :action SearchEverywhere<CR>
+nmap ]e <Action>(GotoNextError)
+nmap [e <Action>(GotoPreviousError)
+map K <Action>(QuickJavaDoc)
+map gi <Action>(GotoImplementation)
+map gr <Action>(FindUsages)
+nmap <c-p> <Action>(SearchEverywhere)
 
 " === Leader ===
-" Borrow key mapping from https://github.com/danidiaz/miscellany/blob/master/windows/.ideavimrc
 noremap \ ,
 
 " Choose Window using Switcher
-map <Leader>wc :action Switcher<CR>
+map <Leader>wc <Action>(Switcher)
 
 " Hide tool window
-map <Leader>zz :action HideActiveWindow<CR>
+map <Leader>zz <Action>(HideActiveWindow)
 
 " NERDTree
-map <leader>e :NERDTreeToggle<CR>
+nmap <leader>e :NERDTreeToggle<CR>
 
 " ReplaceWithRegister
 nmap <Leader>p  <Plug>ReplaceWithRegisterOperator
@@ -45,27 +46,34 @@ xmap <Leader>p  <Plug>ReplaceWithRegisterVisual
 " Generate
 map <Leader>ge <Action>(Generate)
 
-" SurroundWith
-map <Leader>wr :action SurroundWith<CR>
+" <alt-enter>(quick fix)
+map <Leader>qf <Action>(ShowIntentionActions)
+
+" SurroundWith(Wrap)
+map <Leader>wr <Action>(SurroundWith)
 
 " git
-map <Leader>gg :action Git.Menu<CR>
+map <Leader>gg <Action>(Git.Menu)
 
 " not working
 " map [g :action NextDiff<CR>
 " map ]g :action PreviousDiff<CR>
 
 " show
+" #tip <C-S-I> show QuickImplementations in completion menu
 map <Leader>se <Action>(ShowErrorDescription)
 map <Leader>si <Action>(QuickImplementations)
-nnoremap <Leader>sr :action ShowUsages<CR>
+map <Leader>sr <Action>(ShowUsages)
 
 " tags
 map <Leader>t <Action>(FileStructurePopup)
 
 " Refactor
-nnoremap <Leader>rr :action RefactoringMenu<CR>
-nnoremap <Leader>rn :action RenameElement<CR>
+map <Leader>rr <Action>(RefactoringMenu)
+map <Leader>rn <Action>(RenameElement)
+
+" Refactor
+map <Leader>rf <Action>(ReformatCode)
 
 " The default C-o and C-i behaviours have certain inconsistencies with
 " Vim which I can't quite pinpoint.
@@ -137,7 +145,6 @@ set scrolloff=3
 " Ask help from nvim ;)
 " https://www.reddit.com/r/IntelliJIDEA/comments/dphwrd/how_to_configure_ideavim_shortcut_to_open_file_in/
 nmap ,v :action Tool_External Tools_nvim<cr>
-
 
 " === Idea specific settings ===
 set clipboard+=ideaput

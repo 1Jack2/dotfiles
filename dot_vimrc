@@ -185,7 +185,6 @@ autocmd FileType java setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 
 " === Tab ===
 " indicate tabs
-:nmap <leader>l :set invlist<cr>
 set list listchars=tab:>·,trail:·,extends:»,precedes:«,nbsp:×
 
 " === Miscellaneous ===
@@ -246,6 +245,7 @@ silent! exe "set <S-Right>=\<Esc>f"
 " =============================================================================
 "   LEADER
 " =============================================================================
+nmap <leader>l :set invlist<cr>
 nmap <Leader>cw <Plug>(choosewin)
 nnoremap <Leader>u :MundoToggle<CR>
 nnoremap <Leader>e :Defx<CR>
@@ -259,8 +259,6 @@ nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-
-
 
 " fzf
 " nnoremap <Leader>f :Files<CR>
