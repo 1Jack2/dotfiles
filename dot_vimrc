@@ -4,8 +4,6 @@
 call plug#begin('~/.vim/plugged')
 
 " Search
-" Plug 'romainl/vim-cool'                             " Disables highlight when search is done
-" Plug 'junegunn/vim-slash'                           " improve search highlight and star-search
 " Plug 'haya14busa/incsearch.vim'                     " Better incremental search
 " Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " FZF plugin, makes Ctrl-P unnecessary
 " Plug 'junegunn/fzf.vim'
@@ -39,6 +37,7 @@ Plug 'glts/vim-textobj-comment'        " text object for comments
 Plug 'mg979/vim-visual-multi', {'branch': 'master'} " multi cursor
 
 " GUI enhancements
+Plug 'machakann/vim-highlightedyank'  " Make the yanked region apparent!
 Plug 'ryanoasis/vim-devicons'         " Add icons to your plugins
 Plug 'kristijanhusak/defx-icons'      " devicons for defx.nvm
 Plug 'itchyny/lightline.vim'          " Better Status Bar
@@ -84,6 +83,7 @@ Plug 'kristijanhusak/defx-git'        " Git status implementation for defx.nvim
 
 " Colorschemes
 " https://vimcolors.com/[~/.vim/colors]
+Plug 'EdenEast/nightfox.nvim'
 Plug 'arcticicestudio/nord-vim'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
@@ -96,6 +96,7 @@ Plug 'NLKNguyen/papercolor-theme'
 Plug 'cocopon/iceberg.vim'
 
 " Other
+Plug 'brglng/vim-im-select'            " Improve Vim/Neovim experience with input methods
 Plug 'tpope/vim-eunuch'                " Vim sugar for the UNIX shell commands
 " Plug 'tpope/vim-rsi'                   " Readline mappings in insert mode and command line mode
 Plug 'wakatime/vim-wakatime'           " Wakatime time tracking
@@ -120,10 +121,10 @@ call plug#end()
 
 " GUI
 if has("win32")
-    set guifont=FiraCode\ Nerd\ Font\ Mono:h14
-    set guifontwide=Microsoft\ YaHei:h14.5
+    set guifont=FiraCode\ Nerd\ Font\ Mono:h12
+    set guifontwide=Microsoft\ YaHei:h12.5
 elseif has("linux")
-    set guifont=FiraCode\ Nerd\ Font\ Mono:h14
+    set guifont=FiraCode\ Nerd\ Font\ Mono:h12
     " TODO
 end
 
