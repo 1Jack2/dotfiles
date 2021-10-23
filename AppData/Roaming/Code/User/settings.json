@@ -164,4 +164,7 @@
     "languageToolLinter.serviceType": "public",
     "editor.renderWhitespace": "trailing",
     "markdown-preview-enhanced.previewTheme": "solarized-dark.css",
+    "http.proxy": "http://127.0.0.1:7890",
+    "vscode-neovim.neovimExecutablePaths.win32": "D:\\scoop\\apps\\neovim-nightly\\current\\bin\\nvim.exe",
+    "sync.gist": "c5a6b798f9dd7721be1a97c915e4ae18",
 }

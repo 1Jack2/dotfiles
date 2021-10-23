@@ -88,7 +88,8 @@ set hlsearch
 set incsearch
 
 " === Miscellaneous ===
-set noerrorbells visualbell t_vb=
+set visualbell
+set noerrorbells
 set clipboard+=unnamed
 nmap <C-h> gT
 nmap <C-l> gt
@@ -130,6 +131,8 @@ set showcmd             " show command in bottom bar
 " === Plugins ===
 map <Space> <Plug>(easymotion-prefix)
 let g:EasyMotion_keys = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ;'
+map <space>l <Plug>(easymotion-f2)
+map <space>h <Plug>(easymotion-F2)
 let g:argtextobj_pairs="[:],(:),<:>"
 let g:highlightedyank_highlight_duration = "400"
 
@@ -153,3 +156,5 @@ set ideastatusicon=gray
 set idearefactormode=keep
 " Sync IJ bookmarks and Vim marks
 set ideamarks
+
+" / 搜索乱码: Editor -> Font -> Fallback Font 修改为中文字体

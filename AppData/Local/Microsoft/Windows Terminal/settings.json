@@ -26,6 +26,12 @@
             "keys": "ctrl+alt+t"
         },
         {
+            "command": {
+                "action": "closeTab"
+            },
+            "keys": "ctrl+shift+w"
+        },
+        {
             "command": "closePane",
             "keys": "ctrl+alt+w"
         },

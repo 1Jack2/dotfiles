@@ -7,10 +7,6 @@ Set-PSReadLineOption -EditMode Emacs
 # https://superuser.com/questions/1113429/disable-powershell-beep-on-backspace
 Set-PSReadlineOption -BellStyle None
 
-# Import-Module posh-git # 引入 posh-git
-# Import-Module oh-my-posh # 引入 oh-my-posh
-# Set-PoshPrompt -Theme agnoster # 设置主题
-
 # PSFzf
 # Update-Module -Name PSFzf -Scope CurrentUser
 Remove-PSReadlineKeyHandler 'Ctrl+r'
@@ -28,11 +24,21 @@ Set-PSReadLineKeyHandler -Key "Ctrl+d" -Function MenuComplete # 设置 Ctrl+d �
 $env:VISUAL="nvim"
 $env:EDITOR="nvim"
 
+# proxy
+function proxy_on {
+    Set-Item Env:http_proxy "http://127.0.0.1:7890"
+    Set-Item Env:https_proxy "http://127.0.0.1:7890"
+}
+function proxy_off {
+    Remove-Item Env:http_proxy
+    Remove-Item Env:https_proxy
+}
+Set-Alias -Name pc -Value proxychains
+
 # alias
 Remove-Item alias:ls
 Function gs {git status}
 Function gb {git branch}
 Set-Alias -Name vi -Value nvim
-Set-Alias -Name proxy -Value proxychains
 Set-Alias -Name cm -Value chezmoi
 
