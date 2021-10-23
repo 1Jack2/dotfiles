@@ -25,11 +25,11 @@ $env:VISUAL="nvim"
 $env:EDITOR="nvim"
 
 # proxy
-function proxy_on {
+function enable-proxy {
     Set-Item Env:http_proxy "http://127.0.0.1:7890"
     Set-Item Env:https_proxy "http://127.0.0.1:7890"
 }
-function proxy_off {
+function disable-proxy {
     Remove-Item Env:http_proxy
     Remove-Item Env:https_proxy
 }
