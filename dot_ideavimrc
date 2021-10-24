@@ -1,4 +1,3 @@
-" https://github.com/JetBrains/ideavim
 let mapleader=","
 
 " === Plugins ===
@@ -157,4 +156,30 @@ set idearefactormode=keep
 " Sync IJ bookmarks and Vim marks
 set ideamarks
 
+" tips
+" https://github.com/JetBrains/ideavim
 " / 搜索乱码: Editor -> Font -> Fallback Font 修改为中文字体
+" Press <c-s-i> in completion menu will show methode implementation
+" === fold ===
+" A fold smaller than 'foldminlines' will always be displayed like it was open.
+" Therefore the commands below may work differently on small folds.
+"
+"                                                         *zo*
+" zo              Open one fold under the cursor.  When a count is given, that
+"                 many folds deep will be opened.  In Visual mode one level of
+"                 folds is opened for all lines in the selected area.
+"
+"                                                         *zc*
+" zc              Close one fold under the cursor.  When a count is given, that
+"                 many folds deep are closed.  In Visual mode one level of folds
+"                 is closed for all lines in the selected area.
+"                 'foldenable' will be set.
+"
+"                                                         *zM*
+" zM              Close all folds: set 'foldlevel' to 0.
+"                 'foldenable' will be set.
+"
+"                                                         *zR*
+" zR              Open all folds.  This sets 'foldlevel' to highest fold level.
+" zO              like zo, recursively
+" zC              like zc, recursively

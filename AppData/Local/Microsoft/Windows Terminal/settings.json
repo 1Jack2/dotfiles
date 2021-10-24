@@ -16,10 +16,6 @@
             "keys": "ctrl+shift+v"
         },
         {
-            "command": "paste",
-            "keys": "ctrl+v"
-        },
-        {
             "command": {
                 "action": "newTab"
             },
