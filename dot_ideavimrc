@@ -17,16 +17,26 @@ set matchit
 " IdeaVimExtension plugin
 set keep-english-in-normal-and-restore-in-insert
 
+" === Leader ===
+noremap \ ,
+
 " === Action ===
 nmap ]e <Action>(GotoNextError)
 nmap [e <Action>(GotoPreviousError)
 map K <Action>(QuickJavaDoc)
 map gi <Action>(GotoImplementation)
+map gs <Action>(GotoSuperMethod)
 map gr <Action>(FindUsages)
-nmap <c-p> <Action>(SearchEverywhere)
 
-" === Leader ===
-noremap \ ,
+" == Movement ==
+map <a-o> <Action>(RecentLocations)
+" <a-up> <a-down> MethodUp MethodDown
+
+" == Find ==
+nmap <c-p> <Action>(SearchEverywhere)
+map <Leader>ff <Action>(GotoFile)
+" find tag
+map <Leader>ft <Action>(GotoSymbol)
 
 " Choose Window using Switcher
 map <Leader>wc <Action>(Switcher)
@@ -58,16 +68,23 @@ map <Leader>gg <Action>(Git.Menu)
 " map [g :action NextDiff<CR>
 " map ]g :action PreviousDiff<CR>
 
-" show
+" == Show ==
 " #tip <C-S-I> show QuickImplementations in completion menu
+
 map <Leader>se <Action>(ShowErrorDescription)
 map <Leader>si <Action>(QuickImplementations)
+" show reference
 map <Leader>sr <Action>(ShowUsages)
+map <Leader>sd <Action>(ShowUmlDiagramPopup)
+" show tags
+map <Leader>st <Action>(FileStructurePopup)
 
-" tags
-map <Leader>t <Action>(FileStructurePopup)
+" == Toggle ==
+" toggle pretty document
+map <Leader>td <Action>(ToggleRenderedDocPresentation)
+map <Leader>tda <Action>(ToggleRenderedDocPresentationForAll)
 
-" Refactor
+" == Refactor ==
 map <Leader>rr <Action>(RefactoringMenu)
 map <Leader>rn <Action>(RenameElement)
 
@@ -139,7 +156,7 @@ let g:highlightedyank_highlight_duration = "400"
 " copy paste cut
 vnoremap <C-c> "+y
 vnoremap <C-v> "+gP
-inoremap <C-v> <C-o>"+gP
+inoremap <C-v> <C-o>"+gp
 
 " Show a few lines of context around the cursor.  Note that this makes the
 " text scroll if you mouse-click near the start or end of the window.

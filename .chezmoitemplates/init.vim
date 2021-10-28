@@ -262,7 +262,7 @@ nmap <Leader>cw <Plug>(choosewin)
 nnoremap <Leader>u :MundoToggle<CR>
 nnoremap <Leader>e :Defx<CR>
 " nnoremap <Leader>n :NERDTreeToggle<CR>
-nnoremap <Leader>t :Vista!!<CR> " Toggle vista view window
+nnoremap <Leader>st :Vista!!<CR> " Toggle(s means show) vista view window
 " nnoremap <Leader>f :Clap files<CR>
 nmap <Leader>gm <Plug>(git-messenger)
 " Find files using Telescope command-line sugar.
@@ -287,6 +287,12 @@ xmap <Leader>p  <Plug>ReplaceWithRegisterVisual
 " =============================================================================
 "   PLUGIN CONFIG
 " =============================================================================
+" better-whitespace
+nnoremap <Leader>t<space> :ToggleWhitespace<CR>
+
+" quick-scope
+nnoremap <Leader>tq :QuickScopeToggle<CR>
+
 " git-messenger
 let g:git_messenger_no_default_mappings = v:true
 let g:git_messenger_always_into_popup = v:true
@@ -659,6 +665,7 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " wilder.nvim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <Leader>tw :call wilder#toggle()<CR>
 call wilder#setup({
       \ 'modes': [':', '/', '?'],
       \ 'next_key': '<Tab>',
