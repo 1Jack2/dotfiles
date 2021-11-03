@@ -40,12 +40,14 @@ Plug 'mg979/vim-visual-multi', {'branch': 'master'} " multi cursor
 
 " GUI enhancements
 Plug 'machakann/vim-highlightedyank'  " Make the yanked region apparent!
-Plug 'ryanoasis/vim-devicons'         " Add icons to your plugins
+" Plug 'ryanoasis/vim-devicons'         " Add icons to your plugins
+Plug 'kyazdani42/nvim-web-devicons'   " A lua fork of vim-devicons. This plugin provides the same icons as well as colors for each icon.
 Plug 'kristijanhusak/defx-icons'      " devicons for defx.nvm
 Plug 'itchyny/lightline.vim'          " Better Status Bar
 Plug 'ap/vim-buftabline'              " A well-integrated, low-configuration buffer list that lives in the tabline
 " Plug 'bagrat/vim-buffet'              " Brings you the IDE-like tabs into Vim, for easy navigation
 Plug 'mhinz/vim-startify'             " Better start screen
+" Plug 'goolord/alpha-nvim'             " alpha is a fast and highly customizable greeter for neovim.
 Plug 'simnalamburt/vim-mundo'         " Gundo fork
 " Plug 'junegunn/vim-peekaboo'          " show register content
 Plug 'liuchengxu/vista.vim'           " View and search LSP symbols, tags in Vim/NeoVim.
@@ -77,6 +79,7 @@ Plug 'rhysd/vim-grammarous' " grammar checker using *LanguageTool*.
 " Git
 Plug 'airblade/vim-gitgutter'         " Git gutter
 Plug 'tpope/vim-fugitive'             " Git interface
+Plug 'APZelos/blamer.nvim'            " Git blame like GitLens
 Plug 'tpope/vim-rhubarb'              " If fugitive.vim is the Git, rhubarb.vim is the Hub
 Plug 'rhysd/git-messenger.vim'        " show the history of commits under the cursor
 Plug 'junegunn/gv.vim'                " TIG like navigation for vim
@@ -98,6 +101,7 @@ Plug 'NLKNguyen/papercolor-theme'
 Plug 'cocopon/iceberg.vim'
 
 " Other
+Plug 'nathom/filetype.nvim'            " Easily speed up your neovim startup time!
 Plug 'brglng/vim-im-select'            " Improve Vim/Neovim experience with input methods
 Plug 'tpope/vim-eunuch'                " Vim sugar for the UNIX shell commands
 " Plug 'tpope/vim-rsi'                   " Readline mappings in insert mode and command line mode
@@ -257,7 +261,7 @@ silent! exe "set <S-Right>=\<Esc>f"
 " =============================================================================
 "   LEADER
 " =============================================================================
-nmap <leader>l :set invlist<cr>
+nmap <Leader>tl :set invlist<CR>
 nmap <Leader>cw <Plug>(choosewin)
 nnoremap <Leader>u :MundoToggle<CR>
 nnoremap <Leader>e :Defx<CR>
@@ -455,7 +459,7 @@ let g:lightline = {
 
 " hop.nvim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-lua <<EOF
+lua << EOF
 vim.api.nvim_set_keymap('', '<space>w', "<cmd>HopWordAC<cr>", {})
 vim.api.nvim_set_keymap('', '<space>b', "<cmd>HopWordBC<cr>", {})
 vim.api.nvim_set_keymap('', '<space>j', "<cmd>HopLineAC<cr>", {})
