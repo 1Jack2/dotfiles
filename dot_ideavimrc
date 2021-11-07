@@ -87,7 +87,7 @@ map <Leader>st <Action>(FileStructurePopup)
 
 " == Toggle ==
 " toggle pretty document
-map <Leader>td <Action>(ToggleRenderedDocPresentation)
+map <Leader>tdd <Action>(ToggleRenderedDocPresentation)
 map <Leader>tda <Action>(ToggleRenderedDocPresentationForAll)
 
 " == Refactor ==
@@ -160,6 +160,9 @@ let g:highlightedyank_highlight_duration = "400"
 " which-key
 let g:WhichKey_FontFamily = "Fira Code, JetBrains MoNo"
 let g:WhichKey_FontSize = 15
+" Translation
+map <Leader>trr <Action>($EditorTranslateAction)
+map <Leader>trx <Action>($TranslateAndReplaceAction)
 
 " === Jetbrains IDE specific settings(not copy from .vimrc) ===
 " copy paste cut

@@ -79,9 +79,10 @@ Plug 'rhysd/vim-grammarous' " grammar checker using *LanguageTool*.
 " Git
 Plug 'airblade/vim-gitgutter'         " Git gutter
 Plug 'tpope/vim-fugitive'             " Git interface
+Plug 'rbong/vim-flog'                 " A lightweight and powerful git branch viewer that integrates with fugitive
 Plug 'APZelos/blamer.nvim'            " Git blame like GitLens
 Plug 'tpope/vim-rhubarb'              " If fugitive.vim is the Git, rhubarb.vim is the Hub
-Plug 'rhysd/git-messenger.vim'        " show the history of commits under the cursor
+Plug 'rhysd/git-messenger.vim'        " Show the history of commits under the cursor
 Plug 'junegunn/gv.vim'                " TIG like navigation for vim
 " Plug 'xuyuanp/nerdtree-git-plugin'    " Show status of files in NerdTree
 Plug 'kristijanhusak/defx-git'        " Git status implementation for defx.nvim
@@ -229,6 +230,9 @@ lua << EOF
   }
 EOF
 
+" change the directory only for the current window
+nnoremap <Leader>cd :cd %:p:h<CR>:pwd<CR>
+
 " Unbind some useless/annoying default key bindings.
 nmap Q <Nop> " 'Q' in normal mode enters Ex mode. You almost never want this.
 map <C-a> <Nop>
@@ -298,8 +302,11 @@ nnoremap <Leader>t<space> :ToggleWhitespace<CR>
 nnoremap <Leader>tq :QuickScopeToggle<CR>
 
 " git-messenger
-let g:git_messenger_no_default_mappings = v:true
-let g:git_messenger_always_into_popup = v:true
+" let g:git_messenger_no_default_mappings = v:true
+" let g:git_messenger_always_into_popup = v:true
+
+" blamer.nvim
+nnoremap <Leader>gb :BlamerToggle<CR>
 
 " vim-clap
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
