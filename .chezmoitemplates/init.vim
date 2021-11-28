@@ -301,6 +301,11 @@ nnoremap <Leader>t<space> :ToggleWhitespace<CR>
 " quick-scope
 nnoremap <Leader>tq :QuickScopeToggle<CR>
 
+" fugitive
+nnoremap <Leader>gs :G<CR>
+nnoremap <Leader>gf :diffget //2<CR>
+nnoremap <Leader>gj :diffget //3<CR>
+
 " git-messenger
 " let g:git_messenger_no_default_mappings = v:true
 " let g:git_messenger_always_into_popup = v:true
@@ -498,6 +503,7 @@ let g:coc_global_extensions = [
             \ 'coc-snippets',
             \ 'coc-texlab',
             \ 'coc-spell-checker',
+            \ 'coc-tabnine',
             \ ]
 
 " Set internal encoding of vim, not needed on neovim, since coc.nvim using some

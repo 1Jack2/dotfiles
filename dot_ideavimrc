@@ -33,6 +33,8 @@ map K <Action>(QuickJavaDoc)
 map gi <Action>(GotoImplementation)
 map gs <Action>(GotoSuperMethod)
 map gr <Action>(FindUsages)
+" IDEA <c-w>
+map <c-s> <Action>(EditorSelectWord)
 
 " == Movement ==
 map <a-o> <Action>(RecentLocations)
@@ -163,6 +165,8 @@ let g:WhichKey_FontSize = 15
 " Translation
 map <Leader>trr <Action>($EditorTranslateAction)
 map <Leader>trx <Action>($TranslateAndReplaceAction)
+" CodeGlance3
+map <Leader>tg <Action>(CodeGlance.toggle)
 
 " === Jetbrains IDE specific settings(not copy from .vimrc) ===
 " copy paste cut
@@ -220,3 +224,36 @@ set ideamarks
 " zR              Open all folds.  This sets 'foldlevel' to highest fold level.
 " zO              like zo, recursively
 " zC              like zc, recursively
+
+" downloaded plugins
+" ================
+" .ignore (4.3.0)
+" AceJump (3.8.4)
+" Alibaba Java Coding Guidelines (2.1.1)
+" CodeGlance3 (2.1.1-2021.1.3)
+" Custom Postfix Templates (2.12.1.212)
+" File Watchers (212.5080.8)
+" Foldable ProjectView (1.1.1)
+" Frame Switcher (3.29.0-212)
+" GitHub Copilot (1.1.1)
+" GitToolBox (212.8.1)
+" Grep Console (12.1.211.6086.0)
+" IDE Eval Reset (2.3.5)
+" IdeaVim (1.8.1)
+" IdeaVim-EasyMotion (1.6)
+" IdeaVimExtension (1.4.12)
+" JPA Buddy (5.9-212)
+" Key Promoter X (2021.3)
+" Maven Helper (4.18.212.000.3)
+" New Relic CodeStream: GitHub, GitLab, PRs and Code Review (12.3.1+210)
+" Nord (0.13.0)
+" Nyan Progress Bar (1.14)
+" POJO to Json (1.1.0)
+" Polar (1.0.5)
+" Rainbow Brackets (6.21)
+" SonarLint (6.3.0.39716)
+" String Manipulation (8.22.203.000.1)
+" Tabnine AI Code Completion- JS Java Python TS Rust Go PHP & More (0.5.3)
+" Translation (3.2.0.1)
+" WakaTime (13.1.3)
+" Which-Key (0.6)
