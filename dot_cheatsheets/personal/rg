@@ -1,0 +1,2 @@
+# Search literally, i.e., without using regular expression
+rg -F '(test)'
