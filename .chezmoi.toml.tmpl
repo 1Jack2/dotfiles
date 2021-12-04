@@ -1,18 +1,46 @@
 {{- $sharedMachine := promptString "Is this a shared machine (y/n)" -}}
-{{- $fullname := "" -}}
-{{- $email := "" -}}
-{{- $githubUsername := "" -}}
 
-{{- if ne $sharedMachine "y" -}}
-    {{- $fullname = promptString "Full Name" -}}
-    {{- $email = promptString "Email" -}}
-    {{- $githubUsername = promptString "GitHub Username" -}}
+{{- $proxy_host := "" -}}
+{{- if hasKey . "proxy_host" -}}
+{{-   $proxy_host = .proxy_host -}}
+{{- else -}}
+{{-   $proxy_host = promptString "proxy host" -}}
 {{- end -}}
+
+{{- $proxy_port := "" -}}
+{{- if hasKey . "proxy_port" -}}
+{{-   $proxy_port = .proxy_port -}}
+{{- else -}}
+{{-   $proxy_port = promptString "proxy port" -}}
+{{- end -}}
+
+{{- $fullname := "" -}}
+{{- if hasKey . "fullname" -}}
+{{-   $fullname = .fullname -}}
+{{- else -}}
+{{-   $fullname = promptString "fullname" -}}
+{{- end -}}
+
+{{- $email := "" -}}
+{{- if hasKey . "email" -}}
+{{-   $email = .email -}}
+{{- else -}}
+{{-   $email = promptString "email" -}}
+{{- end -}}
+
+{{- $github_username := "" -}}
+{{- if hasKey . "github_username" -}}
+{{-   $github_username = .github_username -}}
+{{- else -}}
+{{-   $github_username = promptString "github username" -}}
+{{- end -}}
+
+{{- writeToStdout "💡 Tip: you can re-enter your name and email with `chezmoi init --data=false`.\n" -}}
 
 [data]
     shared_machine = {{ eq $sharedMachine "y" }}
-{{- if ne $sharedMachine "y" }}
-    fullname = "{{ $fullname }}"
-    email = "{{ $email }}"
-    github_username = "{{ $githubUsername }}"
-{{- end }}
+    proxy_host = {{ $proxy_host | quote }}
+    proxy_port = {{ $proxy_port | quote }}
+    fullname = {{ $fullname | quote }}
+    email = {{ $email | quote }}
+    github_username = {{ $github_username | quote }}
