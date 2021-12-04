@@ -77,6 +77,7 @@ export SCM_CHECK=true
 source "$BASH_IT"/bash_it.sh
 
 # my custom
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 export VISUAL=nvim
 export EDITOR=nvim
@@ -99,9 +100,6 @@ alias cm='chezmoi'
 
 # https://github.com/trapd00r/LS_COLORS
 . ~/.local/share/lscolors.sh
-
-# https://github.com/rupa/z
-. ~/.z_jump/z.sh
 
 # proxychains-ng
 export PROXYCHAINS_CONF_FILE=~/.proxychains.conf
