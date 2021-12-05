@@ -25,6 +25,7 @@ AppData
 .config/gitui
 .alacritty.yml
 .bash_aliases
+.bash_it
 .bashrc
 .inputrc
 .ssh
