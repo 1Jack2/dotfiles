@@ -50,7 +50,7 @@ map <Leader>ft <Action>(GotoSymbol)
 map <Leader>wc <Action>(Switcher)
 
 " Hide tool window
-map <Leader>zz <Action>(HideActiveWindow)
+map <Leader>zz <Action>(HideAllWindows)
 
 " NERDTree
 nmap <leader>e :NERDTreeToggle<CR>
