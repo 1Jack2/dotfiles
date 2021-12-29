@@ -77,7 +77,6 @@ export SCM_CHECK=true
 source "$BASH_IT"/bash_it.sh
 
 # my custom
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 export VISUAL=nvim
 export EDITOR=nvim
@@ -107,7 +106,4 @@ export PROXYCHAINS_CONF_FILE=~/.proxychains.conf
 # starship
 export BASH_IT_THEME=''
 eval "$(starship init bash)"
-
-# fzf
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
