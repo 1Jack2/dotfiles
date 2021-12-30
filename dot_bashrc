@@ -96,6 +96,7 @@ alias gs='git status'
 alias gb='git branch'
 alias pc='proxychains4'
 alias cm='chezmoi'
+alias gu='gitui'
 
 # https://github.com/trapd00r/LS_COLORS
 . ~/.local/share/lscolors.sh
