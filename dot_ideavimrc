@@ -27,14 +27,20 @@ set notimeout
 noremap \ ,
 
 " === Action ===
+
+" == Code navigation ==
 nmap ]e <Action>(GotoNextError)
 nmap [e <Action>(GotoPreviousError)
 map K <Action>(QuickJavaDoc)
 map gi <Action>(GotoImplementation)
 map gs <Action>(GotoSuperMethod)
 map gr <Action>(FindUsages)
+
 " IDEA <c-w>
 map <c-s> <Action>(EditorSelectWord)
+
+" == Completion ==
+imap <c-k> <Action>(ParameterInfo)
 
 " == Movement ==
 map <a-o> <Action>(RecentLocations)
@@ -143,10 +149,6 @@ map <C-x> <Nop>
 nnoremap H ^
 nnoremap L $
 
-" Completion popup menu
-inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
-inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
-
 " Moving lines
 nnoremap <silent> <C-k> :move-2<cr>
 nnoremap <silent> <C-j> :move+<cr>
@@ -201,6 +203,7 @@ set ideamarks
 " Press <c-s-i> in completion menu will show method implementation
 
 " Press <c-p> in insert mode will show matching method arguments
+" I map <c-k> to <c-p> in insert mode, so that I can use <c-p> like in VIM
 
 " Press <F4> in maven module will go to corresponding source file
 

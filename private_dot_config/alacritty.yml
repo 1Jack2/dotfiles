@@ -112,7 +112,7 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: 'JetBrainsMono Nerd Font'
+    family: 'Hack'
 
     # The `style` can be specified to pick a specific face.
     style: Regular
@@ -123,7 +123,7 @@ font:
     #
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: 'JetBrainsMono Nerd Font'
+    family: 'Hack'
 
     # The `style` can be specified to pick a specific face.
     style: Bold
@@ -134,7 +134,7 @@ font:
     #
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: 'JetBrainsMono Nerd Font'
+    family: 'Hack'
 
     # The `style` can be specified to pick a specific face.
     style: Italic
@@ -145,13 +145,13 @@ font:
     #
     # If the bold italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: 'JetBrainsMono Nerd Font'
+    family: 'Hack'
 
     # The `style` can be specified to pick a specific face.
     style: Bold Italic
 
   # Point size
-  size: 14.0
+  size: 12.0
 
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter
@@ -227,7 +227,7 @@ colors:
     white: '#aeb3bb'
 
 # Colors (https://github.com/eendroroy/alacritty-theme)
-colors:
+# colors:
   # primary:
   #   background: '0x2c2c2c'
   #   foreground: '0xd6d6d6'
@@ -486,7 +486,7 @@ colors:
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-background_opacity: 0.8
+background_opacity: 0.9
 
 #selection:
   # This string contains all characters that are used as separators for

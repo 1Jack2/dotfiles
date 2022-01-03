@@ -97,6 +97,7 @@ alias gb='git branch'
 alias pc='proxychains4'
 alias cm='chezmoi'
 alias gu='gitui'
+alias cht='cheat'
 
 # https://github.com/trapd00r/LS_COLORS
 . ~/.local/share/lscolors.sh
@@ -107,4 +108,7 @@ export PROXYCHAINS_CONF_FILE=~/.proxychains.conf
 # starship
 export BASH_IT_THEME=''
 eval "$(starship init bash)"
+
+# z
+[[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
 
