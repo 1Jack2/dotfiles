@@ -472,6 +472,7 @@ let g:lightline = {
 " hop.nvim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 lua << EOF
+require'hop'.setup()
 vim.api.nvim_set_keymap('', '<space>w', "<cmd>HopWordAC<cr>", {})
 vim.api.nvim_set_keymap('', '<space>b', "<cmd>HopWordBC<cr>", {})
 vim.api.nvim_set_keymap('', '<space>j', "<cmd>HopLineAC<cr>", {})
