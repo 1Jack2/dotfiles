@@ -40,7 +40,6 @@ Plug 'mg979/vim-visual-multi', {'branch': 'master'} " multi cursor
 
 " GUI enhancements
 Plug 'machakann/vim-highlightedyank'  " Make the yanked region apparent!
-" Plug 'ryanoasis/vim-devicons'         " Add icons to your plugins
 Plug 'kyazdani42/nvim-web-devicons'   " A lua fork of vim-devicons. This plugin provides the same icons as well as colors for each icon.
 Plug 'kristijanhusak/defx-icons'      " devicons for defx.nvm
 Plug 'itchyny/lightline.vim'          " Better Status Bar
@@ -49,7 +48,6 @@ Plug 'ap/vim-buftabline'              " A well-integrated, low-configuration buf
 Plug 'mhinz/vim-startify'             " Better start screen
 " Plug 'goolord/alpha-nvim'             " alpha is a fast and highly customizable greeter for neovim.
 Plug 'simnalamburt/vim-mundo'         " Gundo fork
-" Plug 'junegunn/vim-peekaboo'          " show register content
 Plug 'liuchengxu/vista.vim'           " View and search LSP symbols, tags in Vim/NeoVim.
 " a dark powered plugin for Neovim/Vim to browse files
 if has('nvim')
@@ -96,19 +94,16 @@ Plug 'sonph/onehalf', { 'rtp': 'vim' }
 Plug 'junegunn/seoul256.vim'
 Plug 'morhetz/gruvbox'
 Plug 'crusoexia/vim-monokai'
-Plug 'crusoexia/vim-monokai'
 Plug 'lifepillar/vim-solarized8'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'cocopon/iceberg.vim'
 
 " Other
-Plug 'nathom/filetype.nvim'            " Easily speed up your neovim startup time!
-Plug 'brglng/vim-im-select'            " Improve Vim/Neovim experience with input methods
+Plug 'rlue/vim-barbaric'               " Improve Vim/Neovim experience with input methods
 Plug 'tpope/vim-eunuch'                " Vim sugar for the UNIX shell commands
 " Plug 'tpope/vim-rsi'                   " Readline mappings in insert mode and command line mode
 Plug 'wakatime/vim-wakatime'           " Wakatime time tracking
 Plug 'folke/which-key.nvim'            " show keybindings in popup
-" Plug 'liuchengxu/vim-which-key'        " show keybindings in popup
 " Plug 'ludovicchabant/vim-gutentags'	   " manage tag files
 Plug 'ellisonleao/glow.nvim'           " A glow preview directly in your neovim buffer
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}	" markdown preview
@@ -116,10 +111,10 @@ Plug 't9md/vim-choosewin'              " Navigate to the window you choose
 Plug 'luochen1990/rainbow'             " Rainbow Parentheses Improved
 Plug 'yggdroot/indentline'             " Shows indentation levels
 Plug 'ntpeters/vim-better-whitespace'  " Highlight trailing whitespace characters
-" Plug 'subnut/nvim-ghost.nvim', {'do': ':call nvim_ghost#installer#install()'} " neovim-only plugin for GhostText
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 Plug 'dansomething/vim-hackernews'     " Browse Hacker News inside Vim
 Plug 'voldikss/vim-translator'         " Asynchronous translating plugin for Vim/Neovim
+Plug 'Olical/conjure'                  " Conjure is an interactive environment for evaluating code within your running program
 
 call plug#end()
 
@@ -221,7 +216,6 @@ set timeoutlen=500
 
 let mapleader=","       " leader is ,
 noremap \ ,             " swap , and \
-" nnoremap <silent> <leader> :WhichKey ','<CR>
 lua << EOF
   require("which-key").setup {
     -- your configuration comes here
@@ -272,7 +266,7 @@ silent! exe "set <S-Right>=\<Esc>f"
 nmap <Leader>tl :set invlist<CR>
 nmap <Leader>cw <Plug>(choosewin)
 nnoremap <Leader>u :MundoToggle<CR>
-nnoremap <Leader>e :Defx<CR>
+nnoremap <Leader>n :Defx<CR>
 " nnoremap <Leader>n :NERDTreeToggle<CR>
 nnoremap <Leader>st :Vista!!<CR> " Toggle(s means show) vista view window
 " nnoremap <Leader>f :Clap files<CR>
@@ -509,6 +503,7 @@ let g:coc_global_extensions = [
             \ 'coc-texlab',
             \ 'coc-spell-checker',
             \ 'coc-tabnine',
+            \ 'coc-conjure',
             \ ]
 
 " Set internal encoding of vim, not needed on neovim, since coc.nvim using some
@@ -677,14 +672,6 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 " Resume latest coc list.
 " nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
-" nvim-ghost
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"augroup nvim_ghost_user_autocommands
-"  au User www.reddit.com,www.stackoverflow.com set filetype=markdown
-"  au User www.reddit.com,www.github.com set filetype=markdown
-"  au User *github.com set filetype=markdown
-"augroup END
-
 " wilder.nvim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nnoremap <Leader>tw :call wilder#toggle()<CR>
@@ -754,4 +741,104 @@ let g:firenvim_config = {
     \ }
 \ }
 let fc = g:firenvim_config['localSettings']
+
+" conjure
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+lua << EOF
+local g = vim.g
+
+g["conjure#mapping#prefix"] = "<leader>"
+
+-- Breifly highlight evaluated forms
+g["conjure#highlight#enabled"] = true
+
+-- Only enable for clojure (so far anyway)
+g["conjure#filetypes"] = { "clojure", "scheme" }
+
+
+
+-- >> Document Mappings
+
+local wk = require("which-key")
+
+-- Base Conjure Mappings
+wk.register({
+    l = {
+        name = "log",
+        s = "Open in new horizontal split window",
+        v = "Open in new vertical split window",
+        t = "Open in new tab",
+        q = "Close all visibal windows in current tab",
+        r = "Soft reset",
+        R = "Hard reset",
+    },
+    E = "Evaluate given motion",
+    e = {
+        name = "eval",
+        e = "Form under the cursor",
+        r = "Root form under the cursor",
+        w = "Word under the cursor",
+        c = {
+            name = "display as comment",
+            e = "Form under the cursor",
+            r = "Root form under the cursor",
+            w = "Word under the cursor",
+        },
+        ["!"] = "Replacing the Form under the cursor",
+        m = "Form at the given mark",
+        f = "File from disk",
+        b = "Current buffer",
+    },
+    g = {
+        name = "goto",
+        d = "Definition",
+    },
+}, { prefix = "<leader>", })
+
+wk.register({
+    E = "Evaluate selection",
+}, { prefix = "<leader>", mode = 'v' })
+
+-- Clojure Nrepl Client Mappings
+wk.register({
+    c = {
+        name = "connection",
+        d = "Disconnect current",
+        f = "Connect",
+    },
+    ei = "Interrupt oldest",
+    v = {
+        name = "view",
+        e = "Last exception",
+        ["1"] = "Most recent evaluation",
+        ["2"] = "2nd most recent evaluation",
+        ["3"] = "3rd most recent evaluation",
+        s = "Source of symbol under cursor",
+    },
+    s = {
+        name = "session",
+        c = "Clone",
+        f = "Create fresh",
+        q = "Close current",
+        Q = "Close all",
+        l = "List",
+        n = "Next",
+        p = "Previous",
+        s = "Prompt to select",
+    },
+    t = {
+        name = "test",
+        a = "Run all loaded tests",
+        n = "Run tests in namespace",
+        N = "Run tests in testing namespace",
+        c = "Run under cursor",
+    },
+    r = {
+        name = "refresh",
+        r = "Changed namespaces",
+        a = "All, even unchanged",
+        c = "Clear refresh cache",
+    },
+}, { prefix = "<leader>", })
+EOF
 

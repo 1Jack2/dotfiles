@@ -1,4 +1,7 @@
 {
+    //-------- coc-pairs Configuration --------
+    "pairs.enableCharacters": ["(", "[", "{", "'", "\"", "`"],
+
     //-------- Code Spell Checker Configuration --------
     // The Language local to use when spell checking. "en" and "en-GB" are currently supported.
     "cSpell.language": "en",
