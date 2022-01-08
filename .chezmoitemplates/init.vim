@@ -252,6 +252,10 @@ nnoremap <silent> <C-j> :move+<cr>
 xnoremap <silent> <C-k> :move-2<cr>gv
 xnoremap <silent> <C-j> :move'>+<cr>gv
 
+" Remap $ and ^ 
+nnoremap H ^
+nnoremap L $
+
 " Readline-style key bindings in command-line (excerpt from rsi.vim)
 cnoremap        <C-A> <Home>
 cnoremap        <C-B> <Left>

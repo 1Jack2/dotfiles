@@ -98,6 +98,10 @@ alias pc='proxychains4'
 alias cm='chezmoi'
 alias gu='gitui'
 alias cht='cheat'
+# https://github.com/andreafrancia/trash-cli/blob/master/README.rst
+# Then, if you really want to use rm, simply prepend a backslash to bypass the alias:
+# \rm file-without-hope
+alias rm='echo "This is not the command you are looking for."; false'
 
 # https://github.com/trapd00r/LS_COLORS
 . ~/.local/share/lscolors.sh
