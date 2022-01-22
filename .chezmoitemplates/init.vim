@@ -208,7 +208,9 @@ set shortmess+=I
 set number
 set relativenumber
 set mouse+=a
-source $VIMRUNTIME/mswin.vim
+if has("win32")
+    source $VIMRUNTIME/mswin.vim
+end
 set clipboard=unnamed
 set splitbelow
 set splitright
@@ -231,6 +233,8 @@ nnoremap <Leader>cd :cd %:p:h<CR>:pwd<CR>
 nmap Q <Nop> " 'Q' in normal mode enters Ex mode. You almost never want this.
 map <C-a> <Nop>
 map <C-x> <Nop>
+
+nnoremap <C-q> <C-v>
 
 " Completion popup menu
 inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
@@ -293,6 +297,9 @@ xmap <Leader>p  <Plug>ReplaceWithRegisterVisual
 " =============================================================================
 "   PLUGIN CONFIG
 " =============================================================================
+" QuickScope
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+
 " better-whitespace
 nnoremap <Leader>t<space> :ToggleWhitespace<CR>
 
@@ -535,6 +542,9 @@ if has("nvim-0.5.0") || has("patch-8.1.1564")
 else
   set signcolumn=yes
 endif
+
+" coc-pairs
+imap <C-h> <BS>
 
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by

@@ -603,7 +603,7 @@ hints:
       enabled: true
       mods: None
     binding:
-      key: U
+      key: H
       mods: Control|Shift
 
 mouse:
@@ -643,8 +643,8 @@ mouse:
 # - `mods` (see key bindings)
 mouse_bindings:
  - { mouse: Middle, action: PasteSelection }
- - { mouse: Left, mods: Control, action: Copy }
- - { mouse: Right, mods: Control, action: Paste }
+ - { mouse: Left, mods: Shift, action: Copy }
+ - { mouse: Right, mods: Shift, action: Paste }
 
 # Key bindings
 #
@@ -851,7 +851,7 @@ mouse_bindings:
 # If the same trigger is assigned to multiple actions, all of them are executed
 # in the order they were defined in.
 key_bindings:
-  - { key: V,  mods: Control,  action: ToggleViMode            }
+  - { key: V,  mods: Control|Alt,  action: ToggleViMode            }
   #- { key: Paste,                                       action: Paste          }
   #- { key: Copy,                                        action: Copy           }
   #- { key: L,         mods: Control,                    action: ClearLogNotice }
@@ -861,7 +861,7 @@ key_bindings:
   #- { key: Home,      mods: Shift,   mode: ~Alt,        action: ScrollToTop,   }
   #- { key: End,       mods: Shift,   mode: ~Alt,        action: ScrollToBottom }
 
-   # Vi Mode
+  # Vi Mode
   - { key: Space,  mods: Shift|Control, mode: Vi|~Search, action: ScrollToBottom          }
   - { key: Space,  mods: Shift|Control, mode: ~Search,    action: ToggleViMode            }
   - { key: Escape,                      mode: Vi|~Search, action: ClearSelection          }
