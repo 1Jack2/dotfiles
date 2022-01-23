@@ -4,6 +4,7 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 let g:plug_url_format='https://git::@hub.fastgit.org/%s.git'
+" let g:plug_url_format='https://git::@github.com.cnpmjs.org/%s.git'
 
 " =============================================================================
 "   PLUGINS
