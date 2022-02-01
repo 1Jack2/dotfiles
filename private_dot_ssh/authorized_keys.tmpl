@@ -1,6 +1,4 @@
 {{ range (gitHubKeys .github_username) }}
 {{- .Key }}
 {{ end }}
-{{- if eq .chezmoi.hostname "myubuntu" -}}
-ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINqMLaAt/ymPpZ3amr+neukcMkkFs/JaCh8u7FaG6jLw admin@laptop
-{{ end -}}
+

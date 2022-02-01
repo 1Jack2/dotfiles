@@ -29,7 +29,7 @@ Plug 'inkarkat/vim-ReplaceWithRegister'
 Plug 'tpope/vim-unimpaired'            " Pairs of mappings
 Plug 'tpope/vim-repeat'                " Adds repeat thorugh . to other packages
 Plug 'tpope/vim-surround'              " Surround with parentheses & co
-Plug 'tpope/vim-commentary'            " To comment stuff out
+Plug 'tomtom/tcomment_vim'             " To comment stuff out
 Plug 'tpope/vim-abolish'               " easily search for, substitute, and abbreviate multiple variants of a word
 Plug 'tommcdo/vim-exchange'            " Easy text exchange operator for Vim
 Plug 'junegunn/vim-easy-align'         " Easier alignment
@@ -43,22 +43,17 @@ Plug 'mg979/vim-visual-multi', {'branch': 'master'} " multi cursor
 " GUI enhancements
 Plug 'machakann/vim-highlightedyank'  " Make the yanked region apparent!
 Plug 'kyazdani42/nvim-web-devicons'   " A lua fork of vim-devicons. This plugin provides the same icons as well as colors for each icon.
-Plug 'kristijanhusak/defx-icons'      " devicons for defx.nvm
 Plug 'itchyny/lightline.vim'          " Better Status Bar
 Plug 'ap/vim-buftabline'              " A well-integrated, low-configuration buffer list that lives in the tabline
-" Plug 'bagrat/vim-buffet'              " Brings you the IDE-like tabs into Vim, for easy navigation
 Plug 'mhinz/vim-startify'             " Better start screen
-" Plug 'goolord/alpha-nvim'             " alpha is a fast and highly customizable greeter for neovim.
 Plug 'simnalamburt/vim-mundo'         " Gundo fork
 Plug 'liuchengxu/vista.vim'           " View and search LSP symbols, tags in Vim/NeoVim.
-" a dark powered plugin for Neovim/Vim to browse files
-if has('nvim')
-  Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/defx.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
+Plug 'lambdalisue/fern.vim'
+Plug 'lambdalisue/fern-hijack.vim'
+Plug 'yuki-yano/fern-preview.vim'
+Plug 'lambdalisue/fern-git-status.vim'
+Plug 'lambdalisue/nerdfont.vim'
+Plug 'lambdalisue/fern-renderer-nerdfont.vim'
 " A more adventurous wildmenu
 if has('nvim')
   Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -77,15 +72,12 @@ Plug 'rhysd/vim-grammarous' " grammar checker using *LanguageTool*.
 " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 
 " Git
-Plug 'airblade/vim-gitgutter'         " Git gutter
 Plug 'tpope/vim-fugitive'             " Git interface
 Plug 'rbong/vim-flog'                 " A lightweight and powerful git branch viewer that integrates with fugitive
-Plug 'APZelos/blamer.nvim'            " Git blame like GitLens
+Plug 'lewis6991/gitsigns.nvim'
 Plug 'tpope/vim-rhubarb'              " If fugitive.vim is the Git, rhubarb.vim is the Hub
 Plug 'rhysd/git-messenger.vim'        " Show the history of commits under the cursor
 Plug 'junegunn/gv.vim'                " TIG like navigation for vim
-" Plug 'xuyuanp/nerdtree-git-plugin'    " Show status of files in NerdTree
-Plug 'kristijanhusak/defx-git'        " Git status implementation for defx.nvim
 
 " Colorschemes
 " https://vimcolors.com/[~/.vim/colors]
@@ -111,7 +103,7 @@ Plug 'ellisonleao/glow.nvim'           " A glow preview directly in your neovim 
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}	" markdown preview
 Plug 't9md/vim-choosewin'              " Navigate to the window you choose
 Plug 'luochen1990/rainbow'             " Rainbow Parentheses Improved
-Plug 'yggdroot/indentline'             " Shows indentation levels
+Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'ntpeters/vim-better-whitespace'  " Highlight trailing whitespace characters
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 Plug 'dansomething/vim-hackernews'     " Browse Hacker News inside Vim
@@ -272,10 +264,7 @@ silent! exe "set <S-Right>=\<Esc>f"
 nmap <Leader>tl :set invlist<CR>
 nmap <Leader>cw <Plug>(choosewin)
 nnoremap <Leader>u :MundoToggle<CR>
-nnoremap <Leader>n :Defx<CR>
-" nnoremap <Leader>n :NERDTreeToggle<CR>
 nnoremap <Leader>st :Vista!!<CR> " Toggle(s means show) vista view window
-" nnoremap <Leader>f :Clap files<CR>
 nmap <Leader>gm <Plug>(git-messenger)
 " Find files using Telescope command-line sugar.
 nnoremap <C-p> :Telescope<CR>
@@ -299,6 +288,100 @@ xmap <Leader>p  <Plug>ReplaceWithRegisterVisual
 " =============================================================================
 "   PLUGIN CONFIG
 " =============================================================================
+
+" fern.vim
+function! s:fern_settings() abort
+  nmap <silent> <buffer> p     <Plug>(fern-action-preview:toggle)
+  nmap <silent> <buffer> <C-p> <Plug>(fern-action-preview:auto:toggle)
+  nmap <silent> <buffer> <C-d> <Plug>(fern-action-preview:scroll:down:half)
+  nmap <silent> <buffer> <C-u> <Plug>(fern-action-preview:scroll:up:half)
+endfunction
+
+augroup fern-settings
+  autocmd!
+  autocmd FileType fern call s:fern_settings()
+augroup END
+
+" fern-renderer-nerdfont.vim
+let g:fern#renderer = "nerdfont"
+
+" gitsigns.nvim
+lua << EOF
+require('gitsigns').setup {
+  signs = {
+    add          = {hl = 'GitSignsAdd'   , text = '│', numhl='GitSignsAddNr'   , linehl='GitSignsAddLn'},
+    change       = {hl = 'GitSignsChange', text = '│', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
+    delete       = {hl = 'GitSignsDelete', text = '_', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
+    topdelete    = {hl = 'GitSignsDelete', text = '‾', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
+    changedelete = {hl = 'GitSignsChange', text = '~', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
+  },
+  signcolumn = true,  -- Toggle with `:Gitsigns toggle_signs`
+  numhl      = false, -- Toggle with `:Gitsigns toggle_numhl`
+  linehl     = false, -- Toggle with `:Gitsigns toggle_linehl`
+  word_diff  = false, -- Toggle with `:Gitsigns toggle_word_diff`
+  watch_gitdir = {
+    interval = 1000,
+    follow_files = true
+  },
+  attach_to_untracked = true,
+  current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
+  current_line_blame_opts = {
+    virt_text = true,
+    virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
+    delay = 1000,
+    ignore_whitespace = false,
+  },
+  current_line_blame_formatter_opts = {
+    relative_time = false
+  },
+  sign_priority = 6,
+  update_debounce = 100,
+  status_formatter = nil, -- Use default
+  max_file_length = 40000,
+  preview_config = {
+    -- Options passed to nvim_open_win
+    border = 'single',
+    style = 'minimal',
+    relative = 'cursor',
+    row = 0,
+    col = 1
+  },
+  yadm = {
+    enable = false
+  },
+
+  on_attach = function(bufnr)
+    local function map(mode, lhs, rhs, opts)
+        opts = vim.tbl_extend('force', {noremap = true, silent = true}, opts or {})
+        vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, opts)
+    end
+
+    -- Navigation
+    map('n', ']c', "&diff ? ']c' : '<cmd>Gitsigns next_hunk<CR>'", {expr=true})
+    map('n', '[c', "&diff ? '[c' : '<cmd>Gitsigns prev_hunk<CR>'", {expr=true})
+
+    -- Actions
+    map('n', '<leader>hs', ':Gitsigns stage_hunk<CR>')
+    map('v', '<leader>hs', ':Gitsigns stage_hunk<CR>')
+    map('n', '<leader>hr', ':Gitsigns reset_hunk<CR>')
+    map('v', '<leader>hr', ':Gitsigns reset_hunk<CR>')
+    map('n', '<leader>hS', '<cmd>Gitsigns stage_buffer<CR>')
+    map('n', '<leader>hu', '<cmd>Gitsigns undo_stage_hunk<CR>')
+    map('n', '<leader>hR', '<cmd>Gitsigns reset_buffer<CR>')
+    map('n', '<leader>hp', '<cmd>Gitsigns preview_hunk<CR>')
+    map('n', '<leader>hb', '<cmd>lua require"gitsigns".blame_line{full=true}<CR>')
+    map('n', '<leader>tb', '<cmd>Gitsigns toggle_current_line_blame<CR>')
+    map('n', '<leader>hd', '<cmd>Gitsigns diffthis<CR>')
+    map('n', '<leader>hD', '<cmd>lua require"gitsigns".diffthis("~")<CR>')
+    map('n', '<leader>td', '<cmd>Gitsigns toggle_deleted<CR>')
+
+    -- Text object
+    map('o', 'ih', ':<C-U>Gitsigns select_hunk<CR>')
+    map('x', 'ih', ':<C-U>Gitsigns select_hunk<CR>')
+  end
+}
+EOF
+
 " QuickScope
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
@@ -312,94 +395,6 @@ nnoremap <Leader>tq :QuickScopeToggle<CR>
 nnoremap <Leader>gs :G<CR>
 nnoremap <Leader>gf :diffget //2<CR>
 nnoremap <Leader>gj :diffget //3<CR>
-
-" git-messenger
-" let g:git_messenger_no_default_mappings = v:true
-" let g:git_messenger_always_into_popup = v:true
-
-" blamer.nvim
-nnoremap <Leader>gb :BlamerToggle<CR>
-
-" vim-clap
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" nnoremap <C-p> :Clap<CR>
-
-" defx
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call defx#custom#option('_', {
-    \ 'buffer_name': 'tabfx',
-    \ 'listed': 1,
-    \ 'show_ignored_files': 1,
-    \ 'resume': 1,
-    \ 'toggle': 1,
-    \ 'columns': 'git:icons:indent:mark:filename:size',
-    \ })
-
-autocmd FileType defx call s:defx_my_settings()
-function! s:defx_my_settings() abort
-  " Define mappings
-  nnoremap <silent><buffer><expr> <CR>
-  \ defx#do_action('open')
-  nnoremap <silent><buffer><expr> c
-  \ defx#do_action('copy')
-  nnoremap <silent><buffer><expr> m
-  \ defx#do_action('move')
-  nnoremap <silent><buffer><expr> p
-  \ defx#do_action('paste')
-  nnoremap <silent><buffer><expr> l
-  \ defx#do_action('open')
-  nnoremap <silent><buffer><expr> E
-  \ defx#do_action('open', 'vsplit')
-  nnoremap <silent><buffer><expr> P
-  \ defx#do_action('preview')
-  nnoremap <silent><buffer><expr> o
-  \ defx#do_action('open_tree', 'toggle')
-  nnoremap <silent><buffer><expr> K
-  \ defx#do_action('new_directory')
-  nnoremap <silent><buffer><expr> N
-  \ defx#do_action('new_file')
-  nnoremap <silent><buffer><expr> M
-  \ defx#do_action('new_multiple_files')
-  nnoremap <silent><buffer><expr> C
-  \ defx#do_action('toggle_columns',
-  \                'mark:indent:icon:filename:type:size:time')
-  nnoremap <silent><buffer><expr> S
-  \ defx#do_action('toggle_sort', 'time')
-  nnoremap <silent><buffer><expr> d
-  \ defx#do_action('remove')
-  nnoremap <silent><buffer><expr> r
-  \ defx#do_action('rename')
-  nnoremap <silent><buffer><expr> !
-  \ defx#do_action('execute_command')
-  nnoremap <silent><buffer><expr> x
-  \ defx#do_action('execute_system')
-  nnoremap <silent><buffer><expr> yy
-  \ defx#do_action('yank_path')
-  nnoremap <silent><buffer><expr> .
-  \ defx#do_action('toggle_ignored_files')
-  nnoremap <silent><buffer><expr> ;
-  \ defx#do_action('repeat')
-  nnoremap <silent><buffer><expr> h
-  \ defx#do_action('cd', ['..'])
-  nnoremap <silent><buffer><expr> ~
-  \ defx#do_action('cd')
-  nnoremap <silent><buffer><expr> q
-  \ defx#do_action('quit')
-  nnoremap <silent><buffer><expr> <Space>
-  \ defx#do_action('toggle_select') . 'j'
-  nnoremap <silent><buffer><expr> *
-  \ defx#do_action('toggle_select_all')
-  nnoremap <silent><buffer><expr> j
-  \ line('.') == line('$') ? 'gg' : 'j'
-  nnoremap <silent><buffer><expr> k
-  \ line('.') == 1 ? 'G' : 'k'
-  nnoremap <silent><buffer><expr> <C-l>
-  \ defx#do_action('redraw')
-  nnoremap <silent><buffer><expr> <C-g>
-  \ defx#do_action('print')
-  nnoremap <silent><buffer><expr> cd
-  \ defx#do_action('change_vim_cwd')
-endfunction
 
 " rainbow
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -497,7 +492,6 @@ let g:coc_disable_transparent_cursor = 1 " https://github.com/neoclide/coc.nvim/
 let g:coc_global_extensions = [
             \ 'coc-json',
             \ 'coc-sql',
-            \ 'coc-git',
             \ 'coc-xml',
             \ 'coc-vimlsp',
             \ 'coc-lists',
@@ -511,7 +505,6 @@ let g:coc_global_extensions = [
             \ 'coc-snippets',
             \ 'coc-texlab',
             \ 'coc-spell-checker',
-            \ 'coc-tabnine',
             \ 'coc-conjure',
             \ ]
 
