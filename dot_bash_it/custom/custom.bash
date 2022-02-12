@@ -45,8 +45,8 @@ export PROXYCHAINS_CONF_FILE=~/.proxychains.conf
 export BASH_IT_THEME=''
 eval "$(starship init bash)"
 
-# z
-[[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
+# zoxide
+eval "$(zoxide init bash)"
 
 # broot
 [[ -r "/home/jack/.config/broot/launcher/bash/br" ]] && source /home/jack/.config/broot/launcher/bash/br

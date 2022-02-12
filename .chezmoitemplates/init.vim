@@ -26,19 +26,20 @@ Plug 'unblevable/quick-scope'         " An always-on highlight for a unique char
 
 " Text Manipulation
 Plug 'inkarkat/vim-ReplaceWithRegister'
-Plug 'tpope/vim-unimpaired'            " Pairs of mappings
-Plug 'tpope/vim-repeat'                " Adds repeat thorugh . to other packages
-Plug 'tpope/vim-surround'              " Surround with parentheses & co
-Plug 'tomtom/tcomment_vim'             " To comment stuff out
-Plug 'tpope/vim-abolish'               " easily search for, substitute, and abbreviate multiple variants of a word
-Plug 'tommcdo/vim-exchange'            " Easy text exchange operator for Vim
-Plug 'junegunn/vim-easy-align'         " Easier alignment
-Plug 'FooSoft/vim-argwrap'             " convert lists of arguments into blocks of arguments
-Plug 'vim-scripts/argtextobj.vim'      " arguments object
-Plug 'michaeljsmith/vim-indent-object' " indent object
-Plug 'kana/vim-textobj-user'           " create your own text objects without pain
-Plug 'glts/vim-textobj-comment'        " text object for comments
+Plug 'tpope/vim-unimpaired'                         " Pairs of mappings
+Plug 'tpope/vim-repeat'                             " Adds repeat thorugh . to other packages
+Plug 'tpope/vim-surround'                           " Surround with parentheses & co
+Plug 'tomtom/tcomment_vim'                          " To comment stuff out
+Plug 'tpope/vim-abolish'                            " easily search for, substitute, and abbreviate multiple variants of a word
+Plug 'tommcdo/vim-exchange'                         " Easy text exchange operator for Vim
+Plug 'junegunn/vim-easy-align'                      " Easier alignment
+Plug 'FooSoft/vim-argwrap'                          " convert lists of arguments into blocks of arguments
+Plug 'vim-scripts/argtextobj.vim'                   " arguments object
+Plug 'michaeljsmith/vim-indent-object'              " indent object
+Plug 'kana/vim-textobj-user'                        " create your own text objects without pain
+Plug 'glts/vim-textobj-comment'                     " text object for comments
 Plug 'mg979/vim-visual-multi', {'branch': 'master'} " multi cursor
+Plug 'Raimondi/delimitMate'                         " Auto pair
 
 " GUI enhancements
 Plug 'machakann/vim-highlightedyank'  " Make the yanked region apparent!
@@ -95,7 +96,6 @@ Plug 'cocopon/iceberg.vim'
 " Other
 Plug 'rlue/vim-barbaric'               " Improve Vim/Neovim experience with input methods
 Plug 'tpope/vim-eunuch'                " Vim sugar for the UNIX shell commands
-" Plug 'tpope/vim-rsi'                   " Readline mappings in insert mode and command line mode
 Plug 'wakatime/vim-wakatime'           " Wakatime time tracking
 Plug 'folke/which-key.nvim'            " show keybindings in popup
 " Plug 'ludovicchabant/vim-gutentags'	   " manage tag files
@@ -109,6 +109,7 @@ Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 Plug 'dansomething/vim-hackernews'     " Browse Hacker News inside Vim
 Plug 'voldikss/vim-translator'         " Asynchronous translating plugin for Vim/Neovim
 Plug 'Olical/conjure'                  " Conjure is an interactive environment for evaluating code within your running program
+Plug 'alker0/chezmoi.vim'              " Chezmoi
 
 call plug#end()
 
@@ -498,7 +499,6 @@ let g:coc_global_extensions = [
             \ 'coc-powershell',
             \ 'coc-sh',
             \ 'coc-explorer',
-            \ 'coc-pairs',
             \ 'coc-marketplace',
             \ 'coc-clangd',
             \ 'coc-pyright',
@@ -537,9 +537,6 @@ if has("nvim-0.5.0") || has("patch-8.1.1564")
 else
   set signcolumn=yes
 endif
-
-" coc-pairs
-imap <C-h> <BS>
 
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
