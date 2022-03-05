@@ -3,8 +3,13 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
   silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
-let g:plug_url_format='https://git::@hub.fastgit.org/%s.git'
+
+" vim-plug proxy
+" let g:plug_url_format='https://git::@hub.fastgit.org/%s.git'
+" let g:plug_url_format='https://git::@hub.fastgit.xyz/%s.git'
 " let g:plug_url_format='https://git::@github.com.cnpmjs.org/%s.git'
+let plug_proxy = stdpath('config') . '/plug-proxy.vim'
+exec 'source' plug_proxy
 
 " =============================================================================
 "   PLUGINS
@@ -87,7 +92,7 @@ Plug 'arcticicestudio/nord-vim'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
 Plug 'junegunn/seoul256.vim'
-Plug 'morhetz/gruvbox'
+Plug 'ellisonleao/gruvbox.nvim'
 Plug 'crusoexia/vim-monokai'
 Plug 'lifepillar/vim-solarized8'
 Plug 'NLKNguyen/papercolor-theme'
@@ -139,7 +144,7 @@ endif
 " set background=light
 " colorscheme PaperColor
 set background=dark
-colorscheme nordfox
+colorscheme gruvbox
 
 " === Cursor ===
 " if exists('$TMUX')
@@ -178,6 +183,7 @@ set autoindent
 set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 
 filetype plugin indent on
+autocmd FileType xml setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 autocmd FileType html setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 autocmd FileType java setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
@@ -289,6 +295,16 @@ xmap <Leader>p  <Plug>ReplaceWithRegisterVisual
 " =============================================================================
 "   PLUGIN CONFIG
 " =============================================================================
+
+" Telescope
+lua << EOF
+require('telescope').setup{
+  defaults = {
+    layout_strategy = 'flex',
+    scroll_strategy = 'cycle',
+  }
+}
+EOF
 
 " fern.vim
 function! s:fern_settings() abort
@@ -458,7 +474,7 @@ set noshowmode
 
 " vista vim-buffet
 let g:lightline = {
-      \ 'colorscheme': 'nord',
+      \ 'colorscheme': 'wombat',
       \ 'enable': {
       \   'tabline': 0
       \ },
@@ -505,6 +521,7 @@ let g:coc_global_extensions = [
             \ 'coc-snippets',
             \ 'coc-texlab',
             \ 'coc-spell-checker',
+            \ 'coc-diagnostic',
             \ 'coc-conjure',
             \ ]
 

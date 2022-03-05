@@ -1,0 +1,9 @@
+ bind / fillcmdline find
+ bind ? fillcmdline find -?
+ bind n findnext 1
+ bind N findnext -1
+ bind ,<Space> nohlsearch
+
+ bind --mode=normal J tabnext
+ bind --mode=normal K tabprev
+
