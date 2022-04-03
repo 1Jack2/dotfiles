@@ -8,6 +8,7 @@
 [alias]
     l = log --all --graph --decorate --oneline
     ll = log --all --graph --decorate
+    dft = difftool
 
 [core]
     editor = nvim
@@ -17,11 +18,21 @@
     autocrlf = input
 {{- end }}
 
+[diff]
+    tool = difftastic
+
+[difftool]
+    prompt = false
+
+[difftool "difftastic"]
+    cmd = difft "$LOCAL" "$REMOTE"
+
 [pager]
     diff = delta
     log = delta
     reflog = delta
     show = delta
+    difftool = true
 
 [interactive]
     diffFilter = delta --color-only --features=interactive
