@@ -37,6 +37,10 @@
 [interactive]
     diffFilter = delta --color-only --features=interactive
 
+# work
+[includeIf "gitdir:~/work/"]
+    path = ~/.gitconfig_work
+
 # Allow local customizations in the .gitconfig_local file
 [include]
     path = ~/.gitconfig_local
