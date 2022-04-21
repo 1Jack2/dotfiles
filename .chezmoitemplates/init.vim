@@ -101,7 +101,6 @@ Plug 'cocopon/iceberg.vim'
 " Other
 Plug 'rlue/vim-barbaric'               " Improve Vim/Neovim experience with input methods
 Plug 'tpope/vim-eunuch'                " Vim sugar for the UNIX shell commands
-Plug 'wakatime/vim-wakatime'           " Wakatime time tracking
 Plug 'folke/which-key.nvim'            " show keybindings in popup
 " Plug 'ludovicchabant/vim-gutentags'	   " manage tag files
 Plug 'ellisonleao/glow.nvim'           " A glow preview directly in your neovim buffer
