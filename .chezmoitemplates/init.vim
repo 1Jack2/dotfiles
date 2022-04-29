@@ -9,7 +9,9 @@ endif
 " let g:plug_url_format='https://git::@hub.fastgit.xyz/%s.git'
 " let g:plug_url_format='https://git::@github.com.cnpmjs.org/%s.git'
 let plug_proxy = stdpath('config') . '/plug-proxy.vim'
-exec 'source' plug_proxy
+if (filereadable(plug_proxy))
+    exec 'source' plug_proxy
+endif
 
 " =============================================================================
 "   PLUGINS

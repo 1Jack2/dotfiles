@@ -14,6 +14,8 @@ export PATH=/home/jack/.cargo/bin:$PATH
 # ================== ENVIRONMENT ==================
 export VISUAL=nvim
 export EDITOR=nvim
+# https://askubuntu.com/a/1052082
+export PROMPT_COMMAND='history -a;history -n'
 
 
 # ================== ALIAS ==================
