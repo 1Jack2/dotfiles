@@ -15,7 +15,8 @@ export PATH=/home/jack/.cargo/bin:$PATH
 export VISUAL=nvim
 export EDITOR=nvim
 # https://askubuntu.com/a/1052082
-export PROMPT_COMMAND='history -a;history -n'
+# conflict with starship
+# export PROMPT_COMMAND='history -a;history -n'
 
 
 # ================== ALIAS ==================
