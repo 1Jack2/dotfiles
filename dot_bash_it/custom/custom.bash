@@ -37,7 +37,7 @@ alias cht='cheat'
 alias rm='echo "This is not the command you are looking for."; false'
 
 
-# ================== SOFTWARE ==================
+# ================== TOOL ==================
 # https://github.com/trapd00r/LS_COLORS
 [[ -r ~/.local/share/lscolors.sh ]] && . ~/.local/share/lscolors.sh
 
@@ -57,6 +57,9 @@ eval "$(zoxide init bash)"
 # fzf
 [ -f /usr/share/fzf/completion.bash ] && source /usr/share/fzf/completion.bash
 [ -f /usr/share/fzf/key-bindings.bash ] && source /usr/share/fzf/key-bindings.bash
+
+# navi
+eval "$(navi widget bash)"
 
 
 # ================== proxy ==================
