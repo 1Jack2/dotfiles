@@ -4,8 +4,8 @@
 # ===============================================
 
 # ================== PROGRAMMING ==================
-# Set up Node Version Manager
-[[ -r "/usr/share/nvm/init-nvm.sh" ]] && source /usr/share/nvm/init-nvm.sh
+# asdf
+. /opt/asdf-vm/asdf.sh
 
 # cargo
 export PATH=/home/jack/.cargo/bin:$PATH
@@ -61,6 +61,9 @@ eval "$(zoxide init bash)"
 # navi
 eval "$(navi widget bash)"
 
+# https://github.com/barthr/redo/issues/2
+export HISTFILE="$HOME/.bash_history"
+source "$(redo alias-file)"
 
 # ================== proxy ==================
 # BASH_IT_HTTP_PROXY and BASH_IT_HTTPS_PROXY: Define the proxy URL to be used, e.g. 'http://localhost:1234'
