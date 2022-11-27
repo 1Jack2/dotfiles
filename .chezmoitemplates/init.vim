@@ -508,6 +508,9 @@ EOF
 let g:coc_disable_transparent_cursor = 1 " https://github.com/neoclide/coc.nvim/issues/1775#issuecomment-757764053
 
 let g:coc_global_extensions = [
+            \ 'coc-eslint',
+            \ 'coc-tsserver',
+            \ 'coc-snippets',
             \ 'coc-json',
             \ 'coc-sql',
             \ 'coc-xml',
