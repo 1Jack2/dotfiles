@@ -78,6 +78,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'} " Make your Vim/Neovim as smart 
 Plug 'kevinoid/vim-jsonc' " Vim syntax highlighting plugin for JSON with C-style comments.
 Plug 'rhysd/vim-grammarous' " grammar checker using *LanguageTool*.
 " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+Plug 'honza/vim-snippets'
 
 " Git
 Plug 'tpope/vim-fugitive'             " Git interface
@@ -116,6 +117,7 @@ Plug 'dansomething/vim-hackernews'     " Browse Hacker News inside Vim
 Plug 'voldikss/vim-translator'         " Asynchronous translating plugin for Vim/Neovim
 Plug 'Olical/conjure'                  " Conjure is an interactive environment for evaluating code within your running program
 Plug 'alker0/chezmoi.vim'              " Chezmoi
+Plug 'editorconfig/editorconfig-vim'   " EditorConfig plugin for Vim
 
 call plug#end()
 
@@ -184,6 +186,7 @@ set autoindent
 set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 
 filetype plugin indent on
+autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 autocmd FileType xml setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 autocmd FileType html setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
@@ -297,7 +300,12 @@ xmap <Leader>p  <Plug>ReplaceWithRegisterVisual
 "   PLUGIN CONFIG
 " =============================================================================
 
+" EditorConfig
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
+
 " Telescope
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 lua << EOF
 require('telescope').setup{
   defaults = {
@@ -587,8 +595,8 @@ keyset("n", "<leader>rn", "<Plug>(coc-rename)", {silent = true})
 
 
 -- Formatting selected code.
-keyset("x", "<leader>f", "<Plug>(coc-format-selected)", {silent = true})
-keyset("n", "<leader>f", "<Plug>(coc-format-selected)", {silent = true})
+keyset("x", "<leader>rf", "<Plug>(coc-format-selected)", {silent = true})
+keyset("n", "<leader>rf", "<Plug>(coc-format-selected)", {silent = true})
 
 
 -- Setup formatexpr specified filetype(s).
@@ -711,7 +719,6 @@ let g:coc_global_extensions = [
             \ 'coc-marketplace',
             \ 'coc-clangd',
             \ 'coc-pyright',
-            \ 'coc-snippets',
             \ 'coc-texlab',
             \ 'coc-spell-checker',
             \ 'coc-diagnostic',

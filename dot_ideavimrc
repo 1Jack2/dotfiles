@@ -29,8 +29,8 @@ noremap \ ,
 " === Action ===
 
 " == Code navigation ==
-nmap ]e <Action>(GotoNextError)
-nmap [e <Action>(GotoPreviousError)
+nmap ]g <Action>(GotoNextError)
+nmap [g <Action>(GotoPreviousError)
 map K <Action>(QuickJavaDoc)
 map gi <Action>(GotoImplementation)
 map gs <Action>(GotoSuperMethod)
