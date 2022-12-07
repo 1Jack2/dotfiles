@@ -1,9 +1,12 @@
- bind / fillcmdline find
- bind ? fillcmdline find -?
- bind n findnext 1
- bind N findnext -1
- bind ,<Space> nohlsearch
+bind / fillcmdline find
+bind ? fillcmdline find -?
+bind n findnext 1
+bind N findnext -1
+bind ,<Space> nohlsearch
 
- bind --mode=normal J tabnext
- bind --mode=normal K tabprev
+bind --mode=normal J tabnext
+bind --mode=normal K tabprev
 
+nmap Q <Nop> " 'Q' in normal mode enters Ex mode. You almost never want this.
+map <C-a> <Nop>
+map <C-x> <Nop>
