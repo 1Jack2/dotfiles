@@ -703,8 +703,10 @@ EOF
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " My custom coc settings
 let g:coc_disable_transparent_cursor = 1 " https://github.com/neoclide/coc.nvim/issues/1775#issuecomment-757764053
+command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
 
 let g:coc_global_extensions = [
+            \ 'coc-prettier',
             \ 'coc-eslint',
             \ 'coc-tsserver',
             \ 'coc-snippets',
