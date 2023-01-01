@@ -14,9 +14,12 @@ set highlightedyank
 set vim-paragraph-motion
 set indent-object
 set matchit
+" require IdeaVim-Quickscope plugin installed
+set quickscope
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
 " IdeaVimExtension plugin
-set keep-english-in-normal-and-restore-in-insert
+set keep-english-in-normal
 
 " https://github.com/TheBlob42/idea-which-key
 set which-key

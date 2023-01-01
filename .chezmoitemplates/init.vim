@@ -118,6 +118,7 @@ Plug 'voldikss/vim-translator'         " Asynchronous translating plugin for Vim
 Plug 'Olical/conjure'                  " Conjure is an interactive environment for evaluating code within your running program
 Plug 'alker0/chezmoi.vim'              " Chezmoi
 Plug 'editorconfig/editorconfig-vim'   " EditorConfig plugin for Vim
+Plug 'jeffkreeftmeijer/vim-numbertoggle' " Toggles between hybrid and absolute line numbers automatically
 
 call plug#end()
 
