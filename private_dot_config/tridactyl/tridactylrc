@@ -11,6 +11,16 @@ nmap Q <Nop> " 'Q' in normal mode enters Ex mode. You almost never want this.
 map <C-a> <Nop>
 map <C-x> <Nop>
 
+"
 " Search urls
+"
+" Maven
 set searchurls.mvn https://mvnrepository.com/search?q=%s
+" Google
 set searchurls.gcn https://www.google.com/search?q=%s&lr=lang_zh-CN
+" Git
+set searchurls.gh https://github.com/search?q=%s
+setnull searchurls.github
+" Archlinux
+set searchurls.aw https://wiki.archlinux.org/index.php?search=%s&title=Special%3ASearch&go=Go
+set searchurls.aur https://aur.archlinux.org/packages/?K=%s
