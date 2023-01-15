@@ -119,6 +119,7 @@ Plug 'Olical/conjure'                  " Conjure is an interactive environment f
 Plug 'alker0/chezmoi.vim'              " Chezmoi
 Plug 'editorconfig/editorconfig-vim'   " EditorConfig plugin for Vim
 Plug 'jeffkreeftmeijer/vim-numbertoggle' " Toggles between hybrid and absolute line numbers automatically
+Plug 'ActivityWatch/aw-watcher-vim'
 
 call plug#end()
 
