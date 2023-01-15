@@ -3,7 +3,7 @@
   <mirrors>
     <mirror>
       <id>aliyunmaven</id>
-      <mirrorOf>*,!egova,!aliyun</mirrorOf>
+      <mirrorOf>*,!egova,!aliyun,!confluent</mirrorOf>
       <name>阿里云公共仓库</name>
       <url>https://maven.aliyun.com/repository/public</url>
     </mirror>
