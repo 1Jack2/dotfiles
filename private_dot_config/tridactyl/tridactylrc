@@ -18,6 +18,7 @@ map <C-x> <Nop>
 set searchurls.mvn https://mvnrepository.com/search?q=%s
 " Google
 set searchurls.gcn https://www.google.com/search?q=%s&lr=lang_zh-CN
+set searchurls.gs https://www.google.com/search?q=site:%s
 " Git
 set searchurls.gh https://github.com/search?q=%s
 setnull searchurls.github
