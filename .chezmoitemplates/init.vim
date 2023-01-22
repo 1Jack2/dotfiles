@@ -120,7 +120,7 @@ Plug 'alker0/chezmoi.vim'              " Chezmoi
 Plug 'editorconfig/editorconfig-vim'   " EditorConfig plugin for Vim
 Plug 'jeffkreeftmeijer/vim-numbertoggle' " Toggles between hybrid and absolute line numbers automatically
 Plug 'ActivityWatch/aw-watcher-vim'
-
+Plug 'tridactyl/vim-tridactyl'         " VIM syntax plugin for Tridactyl configuration files
 call plug#end()
 
 " =============================================================================
