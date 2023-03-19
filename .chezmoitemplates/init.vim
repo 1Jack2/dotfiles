@@ -708,6 +708,8 @@ let g:coc_disable_transparent_cursor = 1 " https://github.com/neoclide/coc.nvim/
 command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
 
 let g:coc_global_extensions = [
+            \ 'coc-yaml',
+            \ 'coc-java',
             \ 'coc-prettier',
             \ 'coc-eslint',
             \ 'coc-tsserver',
