@@ -101,6 +101,9 @@
             }
         }
     },
-    "diagnostic-languageserver.filetypes": {"clojure":"clj_kondo_lint"}
+    "diagnostic-languageserver.filetypes": {
+      "clojure": "clj_kondo_lint"
+    },
+    "snippets.ultisnips.pythonPrompt": false
 }
 

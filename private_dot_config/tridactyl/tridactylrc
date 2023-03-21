@@ -7,9 +7,9 @@ bind ,<Space> nohlsearch
 bind --mode=normal J tabnext
 bind --mode=normal K tabprev
 
-nmap Q <Nop> " 'Q' in normal mode enters Ex mode. You almost never want this.
-nmap <C-a> <Nop>
-nmap <C-x> <Nop>
+unbind --mode=normal <C-a>
+unbind --mode=normal <C-x>
+unbind --mode=normal Q
 
 "
 " Search urls
