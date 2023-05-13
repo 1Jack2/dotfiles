@@ -42,9 +42,11 @@ Plug 'tommcdo/vim-exchange'                         " Easy text exchange operato
 Plug 'junegunn/vim-easy-align'                      " Easier alignment
 Plug 'FooSoft/vim-argwrap'                          " convert lists of arguments into blocks of arguments
 Plug 'vim-scripts/argtextobj.vim'                   " arguments object
-Plug 'michaeljsmith/vim-indent-object'              " indent object
 Plug 'kana/vim-textobj-user'                        " create your own text objects without pain
 Plug 'glts/vim-textobj-comment'                     " text object for comments
+Plug 'kana/vim-textobj-entire'                      " Text objects for entire buffer
+Plug 'kana/vim-textobj-line'                        " Text objects for the current line
+Plug 'kana/vim-textobj-indent'                      " Text objects for indented blocks of lines
 Plug 'mg979/vim-visual-multi', {'branch': 'master'} " multi cursor
 Plug 'Raimondi/delimitMate'                         " Auto pair
 
