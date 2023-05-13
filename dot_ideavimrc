@@ -31,6 +31,9 @@ noremap \ ,
 
 " === Action ===
 
+" uncategorized action
+map <Leader>ac CompileFile
+
 " == Code navigation ==
 nmap ]g <Action>(GotoNextError)
 nmap [g <Action>(GotoPreviousError)
@@ -41,6 +44,7 @@ map gr <Action>(FindUsages)
 
 " IDEA <c-w>
 map <c-s> <Action>(EditorSelectWord)
+map <c-s-s> <Action>(EditorUnSelectWord)
 
 " == Completion ==
 imap <c-k> <Action>(ParameterInfo)
@@ -54,6 +58,10 @@ nmap <c-p> <Action>(SearchEverywhere)
 map <Leader>ff <Action>(GotoFile)
 " find tag
 map <Leader>ft <Action>(GotoSymbol)
+" find action
+map <Leader>fa <Action>(GotoAction)
+" find class
+map <Leader>fc <Action>(GotoClass)
 
 " Choose Window using Switcher
 map <Leader>wc <Action>(Switcher)
@@ -113,6 +121,7 @@ map <Leader>rf <Action>(ReformatCode)
 " I'm using the default IntelliJ behaviours instead.
 map <C-o> <Action>(Back)
 map <C-i> <Action>(Forward)
+
 
 " === Search ===
 set ignorecase
