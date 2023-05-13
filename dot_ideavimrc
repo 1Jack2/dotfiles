@@ -32,7 +32,7 @@ noremap \ ,
 " === Action ===
 
 " uncategorized action
-map <Leader>ac CompileFile
+map <Leader>ac <Action>(CompileFile)
 
 " == Code navigation ==
 nmap ]g <Action>(GotoNextError)
@@ -157,6 +157,8 @@ set splitrigh
 nmap Q <Nop> " 'Q' in normal mode enters Ex mode. You almost never want this.
 map <C-a> <Nop>
 map <C-x> <Nop>
+map <f1> <Nop>
+map <S-f1> <Action>(ContextHelp)
 
 nnoremap H ^
 nnoremap L $
