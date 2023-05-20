@@ -93,15 +93,32 @@ Plug 'junegunn/gv.vim'                " TIG like navigation for vim
 " Colorschemes
 " https://vimcolors.com/[~/.vim/colors]
 Plug 'EdenEast/nightfox.nvim'
-Plug 'arcticicestudio/nord-vim'
-Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'sonph/onehalf', { 'rtp': 'vim' }
-Plug 'junegunn/seoul256.vim'
-Plug 'ellisonleao/gruvbox.nvim'
-Plug 'crusoexia/vim-monokai'
-Plug 'lifepillar/vim-solarized8'
+Plug 'Everblush/everblush.vim'
+Plug 'KeitaNakamura/neodark.vim'
+Plug 'Mofiqul/vscode.nvim'
 Plug 'NLKNguyen/papercolor-theme'
+Plug 'arcticicestudio/nord-vim'
 Plug 'cocopon/iceberg.vim'
+Plug 'crusoexia/vim-monokai'
+Plug 'daschw/leaf.nvim'
+Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'ellisonleao/gruvbox.nvim'
+Plug 'ghifarit53/tokyonight-vim'
+Plug 'joshdick/onedark.vim'
+Plug 'junegunn/seoul256.vim'
+Plug 'kvrohit/substrata.nvim'
+Plug 'lifepillar/vim-solarized8'
+Plug 'rafamadriz/neon'
+Plug 'ray-x/aurora'
+Plug 'rebelot/kanagawa.nvim'
+Plug 'sainnhe/everforest'
+Plug 'sainnhe/sonokai'
+Plug 'savq/melange'
+Plug 'shaunsingh/nord.nvim'
+Plug 'shaunsingh/solarized.nvim'
+Plug 'sonph/onehalf', { 'rtp': 'vim' }
+Plug 'tanvirtin/monokai.nvim'
+Plug 'titanzero/zephyrium'
 
 " Other
 Plug 'rlue/vim-barbaric'               " Improve Vim/Neovim experience with input methods
@@ -149,9 +166,43 @@ if has("termguicolors")
 endif
 " To quickly toggle between them, use vim-unimpaired's keymap yob
 " set background=light
-" colorscheme PaperColor
 set background=dark
-colorscheme gruvbox
+lua << EOF
+random_color = {
+    'monokai_pro',
+    'monokai',
+    'melange',
+    'lunaperche',
+    'leaf',
+    'koehler',
+    'kanagawa-wave',
+    'kanagawa-lotus',
+    'kanagawa-dragon',
+    'kanagawa',
+    'industry',
+    'iceberg',
+    'habamax',
+    'gruvbox',
+    'everforest',
+    'everblush',
+    'evening',
+    'elflord',
+    'duskfox',
+    'dracula',
+    'desert',
+    'delek',
+    'dawnfox',
+    'darkblue',
+    'carbonfox',
+    'blue',
+    'aurora',
+    'PaperColor',
+    'default'
+}
+math.randomseed(os.time())
+local mycolor = random_color[math.random(#random_color)]
+vim.cmd('colorscheme ' .. mycolor)
+EOF
 
 " === Cursor ===
 " if exists('$TMUX')
