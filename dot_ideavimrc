@@ -50,7 +50,7 @@ map <c-s-s> <Action>(EditorUnSelectWord)
 imap <c-k> <Action>(ParameterInfo)
 
 " == Movement ==
-map <a-o> <Action>(RecentLocations)
+map <a-o> <Action>(RecentFiles)
 " <a-up> <a-down> MethodUp MethodDown
 
 " == Find ==
