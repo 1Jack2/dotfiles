@@ -41,6 +41,8 @@ map K <Action>(QuickJavaDoc)
 map gi <Action>(GotoImplementation)
 map gs <Action>(GotoSuperMethod)
 map gr <Action>(FindUsages)
+nmap <C-o> <Action>(Back)
+nmap <Tab> <Action>(Forward)
 
 " IDEA <c-w>
 map <c-s> <Action>(EditorSelectWord)

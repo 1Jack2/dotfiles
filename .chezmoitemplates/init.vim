@@ -172,32 +172,34 @@ random_color = {
     'monokai_pro',
     'monokai',
     'melange',
-    'lunaperche',
     'leaf',
-    'koehler',
     'kanagawa-wave',
-    'kanagawa-lotus',
     'kanagawa-dragon',
     'kanagawa',
-    'industry',
     'iceberg',
     'habamax',
     'gruvbox',
     'everforest',
     'everblush',
-    'evening',
-    'elflord',
     'duskfox',
     'dracula',
     'desert',
-    'delek',
     'dawnfox',
-    'darkblue',
     'carbonfox',
-    'blue',
     'aurora',
     'PaperColor',
-    'default'
+    'zephyrium',
+    'tokyonight',
+    'terafox',
+    'substrata',
+    'sonokai',
+    'solarized8_low',
+    'solarized8_high',
+    'solarized8_flat',
+    'solarized8',
+    'solarized',
+    'seoul256-light',
+    'seoul256',
 }
 math.randomseed(os.time())
 local mycolor = random_color[math.random(#random_color)]
@@ -299,10 +301,6 @@ nnoremap <C-q> <C-v>
 " Completion popup menu
 inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
 inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
-
-" Buffer switch
-nnoremap <C-L> :bnext<CR>
-nnoremap <C-H> :bprev<CR>
 
 " Moving lines
 nnoremap <silent> <C-k> :move-2<cr>
