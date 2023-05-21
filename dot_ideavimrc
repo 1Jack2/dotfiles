@@ -64,6 +64,8 @@ map <Leader>ft <Action>(GotoSymbol)
 map <Leader>fa <Action>(GotoAction)
 " find class
 map <Leader>fc <Action>(GotoClass)
+" find string
+map <Leader>fs <Action>(FindInPath)
 
 " Choose Window using Switcher
 map <Leader>wc <Action>(Switcher)
