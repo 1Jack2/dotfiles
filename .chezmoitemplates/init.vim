@@ -102,7 +102,7 @@ Plug 'cocopon/iceberg.vim'
 Plug 'crusoexia/vim-monokai'
 Plug 'daschw/leaf.nvim'
 Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'ellisonleao/gruvbox.nvim'
+Plug 'lifepillar/vim-gruvbox8'
 Plug 'ghifarit53/tokyonight-vim'
 Plug 'joshdick/onedark.vim'
 Plug 'junegunn/seoul256.vim'
@@ -178,7 +178,7 @@ random_color = {
     'kanagawa',
     'iceberg',
     'habamax',
-    'gruvbox',
+    'gruvbox8_soft',
     'everforest',
     'everblush',
     'duskfox',
