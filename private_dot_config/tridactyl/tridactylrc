@@ -20,6 +20,9 @@ set smoothscroll true
 
 bind --mode=normal J tabnext
 bind --mode=normal K tabprev
+bind d composite tabprev; tabclose #
+bind D composite tabnext; tabclose #
+
 
 unbind --mode=normal <C-a>
 unbind --mode=normal <C-x>
