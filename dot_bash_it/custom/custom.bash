@@ -38,6 +38,11 @@ alias rm='echo "This is not the command you are looking for."; false'
 
 
 # ================== TOOL ==================
+
+# bashi_it includes bash-preexec
+# https://github.com/rcaloras/bash-preexec
+# [[ -f /usr/share/bash-preexec/bash-preexec.sh ]] && source /usr/share/bash-preexec/bash-preexec.sh
+
 # https://github.com/trapd00r/LS_COLORS
 [[ -r ~/.local/share/lscolors.sh ]] && . ~/.local/share/lscolors.sh
 
@@ -71,3 +76,7 @@ source "$(redo alias-file)"
 export BASH_IT_HTTP_PROXY='http://127.0.0.1:7890'
 export BASH_IT_HTTPS_PROXY='http://127.0.0.1:7890'
 export BASH_IT_NO_PROXY='127.0.0.1,localhost'
+
+# https://github.com/atuinsh/atuin
+eval "$(atuin init bash)"
+
