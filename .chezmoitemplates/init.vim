@@ -165,41 +165,23 @@ if has("termguicolors")
     set termguicolors
 endif
 " To quickly toggle between them, use vim-unimpaired's keymap yob
-" set background=light
-set background=dark
+set background=light
+" set background=dark
 lua << EOF
 random_color = {
-    'monokai_pro',
-    'monokai',
     'melange',
-    'leaf',
-    'kanagawa-wave',
-    'kanagawa-dragon',
     'kanagawa',
     'iceberg',
-    'habamax',
     'gruvbox8_soft',
     'everforest',
-    'everblush',
-    'duskfox',
-    'dracula',
-    'desert',
     'dawnfox',
-    'carbonfox',
-    'aurora',
     'PaperColor',
-    'zephyrium',
-    'tokyonight',
-    'terafox',
-    'substrata',
-    'sonokai',
     'solarized8_low',
     'solarized8_high',
     'solarized8_flat',
     'solarized8',
     'solarized',
     'seoul256-light',
-    'seoul256',
 }
 math.randomseed(os.time())
 local mycolor = random_color[math.random(#random_color)]
