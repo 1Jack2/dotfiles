@@ -43,8 +43,8 @@ alias rm='echo "This is not the command you are looking for."; false'
 # https://github.com/rcaloras/bash-preexec
 # [[ -f /usr/share/bash-preexec/bash-preexec.sh ]] && source /usr/share/bash-preexec/bash-preexec.sh
 
-# https://github.com/trapd00r/LS_COLORS
-[[ -r ~/.local/share/lscolors.sh ]] && . ~/.local/share/lscolors.sh
+# https://github.com/sharkdp/vivid 
+export LS_COLORS="$(vivid generate gruvbox-light)"
 
 # proxychains-ng
 export PROXYCHAINS_CONF_FILE=~/.proxychains.conf

@@ -33,6 +33,8 @@ noremap \ ,
 
 " uncategorized action
 map <Leader>ac <Action>(CompileFile)
+map <Leader>au <Action>(UpdateRunningApplication)
+
 
 " == Code navigation ==
 nmap ]g <Action>(GotoNextError)
