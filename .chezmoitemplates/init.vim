@@ -107,7 +107,7 @@ Plug 'ghifarit53/tokyonight-vim'
 Plug 'joshdick/onedark.vim'
 Plug 'junegunn/seoul256.vim'
 Plug 'kvrohit/substrata.nvim'
-Plug 'lifepillar/vim-solarized8'
+Plug 'lifepillar/vim-solarized8', {'branch': 'neovim'}
 Plug 'rafamadriz/neon'
 Plug 'ray-x/aurora'
 Plug 'rebelot/kanagawa.nvim'

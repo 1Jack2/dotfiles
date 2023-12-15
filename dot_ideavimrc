@@ -109,6 +109,8 @@ map <Leader>sr <Action>(ShowUsages)
 map <Leader>sd <Action>(ShowUmlDiagramPopup)
 " show tags
 map <Leader>st <Action>(FileStructurePopup)
+" show SelectIn
+map <Leader>ss <Action>(SelectIn)
 
 " == Toggle ==
 " toggle pretty document
@@ -190,8 +192,8 @@ let g:WhichKey_FontSize = 15
 " Translation
 map <Leader>trr <Action>($EditorTranslateAction)
 map <Leader>trx <Action>($TranslateAndReplaceAction)
-" CodeGlance3
-map <Leader>tg <Action>(CodeGlance.toggle)
+" CodeGlancePro
+map <Leader>tg <Action>(CodeGlancePro.toggle)
 
 " === Jetbrains IDE specific settings(not copy from .vimrc) ===
 " copy paste cut

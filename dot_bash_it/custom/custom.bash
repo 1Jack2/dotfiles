@@ -30,6 +30,7 @@ alias pc='proxychains4'
 alias cm='chezmoi'
 alias gu='gitui'
 alias cht='cheat'
+alias l='br -sdp'
 
 # https://github.com/andreafrancia/trash-cli/blob/master/README.rst
 # Then, if you really want to use rm, simply prepend a backslash to bypass the alias:
