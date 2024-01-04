@@ -34,6 +34,7 @@ noremap \ ,
 " uncategorized action
 map <Leader>ac <Action>(CompileFile)
 map <Leader>au <Action>(UpdateRunningApplication)
+map <Leader>as <Action>(osmedile.intellij.stringmanip.PopupChoiceAction)
 
 
 " == Code navigation ==
@@ -123,6 +124,9 @@ map <Leader>rn <Action>(RenameElement)
 
 " Refactor
 map <Leader>rf <Action>(ReformatCode)
+
+" Copy
+map <Leader>yr <Action>(CopyReference)
 
 " The default C-o and C-i behaviours have certain inconsistencies with
 " Vim which I can't quite pinpoint.
