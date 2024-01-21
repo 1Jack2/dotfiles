@@ -742,7 +742,6 @@ command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
 
 let g:coc_global_extensions = [
             \ 'coc-yaml',
-            \ 'coc-java',
             \ 'coc-prettier',
             \ 'coc-eslint',
             \ 'coc-tsserver',
