@@ -23,10 +23,19 @@ bind --mode=normal K tabprev
 bind d composite tabprev; tabclose #
 bind D composite tabnext; tabclose #
 
+" make t open the selection with tabopen
+bind --mode=visual t composite js document.getSelection().toString() | fillcmdline tabopen
 
+" Allow Ctrl-a to select all in the commandline
+unbind --mode=ex <C-a>
+" Allow Ctrl-c to copy in the commandline
+unbind --mode=ex <C-c>
 unbind --mode=normal <C-a>
 unbind --mode=normal <C-x>
 unbind --mode=normal Q
+
+" Defaults to 300ms but I'm a 'move fast and close the wrong tabs' kinda chap
+set hintdelay 100
 
 " Don't run Tridactyl on some web sites because it doesn't work well, or
 " because the web site has its own keybindings.
