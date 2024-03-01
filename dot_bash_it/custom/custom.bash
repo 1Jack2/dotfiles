@@ -10,6 +10,8 @@
 # cargo
 export PATH=/home/jack/.cargo/bin:$PATH
 
+# golang
+export GOPROXY=https://goproxy.io,direct
 
 # ================== ENVIRONMENT ==================
 export VISUAL=nvim
@@ -79,5 +81,5 @@ export BASH_IT_HTTPS_PROXY='http://127.0.0.1:7890'
 export BASH_IT_NO_PROXY='127.0.0.1,localhost'
 
 # https://github.com/atuinsh/atuin
-eval "$(atuin init bash)"
+eval "$(atuin init bash --disable-up-arrow)"
 
