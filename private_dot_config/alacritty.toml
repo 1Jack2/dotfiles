@@ -336,6 +336,12 @@ key = "N"
 mode = "Vi|~Search"
 mods = "Shift"
 
+# bind <C-BS> to delete backward word 
+[[keyboard.bindings]]
+chars = "\u0017"
+key = "Back"
+mods = "Control"
+
 [mouse]
 hide_when_typing = true
 
