@@ -50,6 +50,8 @@ guiset_quiet hoverlink top-right
 "
 " Maven
 set searchurls.mvn https://mvnrepository.com/search?q=%s
+set searchurls.mvn1 https://central.sonatype.com/search?q=%s
+
 " Google
 set searchurls.gcn https://www.google.com/search?q=%s&lr=lang_zh-CN
 set searchurls.gs https://www.google.com/search?q=site:%s
@@ -61,4 +63,6 @@ set searchurls.aw https://wiki.archlinux.org/index.php?search=%s&title=Special%3
 set searchurls.aur https://aur.archlinux.org/packages/?K=%s
 " NeoDB
 set searchurls.neodb https://neodb.social/search/?q=%s&c=all
+" douban
+set searchurls.douban https://www.douban.com/search?q=%s
 

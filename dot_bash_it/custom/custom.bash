@@ -3,6 +3,11 @@
 # ================== MY CUSTOM ==================
 # ===============================================
 
+# ================== KEYMAP ==================
+# https://unix.stackexchange.com/questions/27927/is-it-possible-to-configure-ctrl-w-delete-word
+# https://shallowsky.com/blog/linux/bash-word-erase.html
+bind '"\C-w":backward-kill-word'
+
 # ================== PROGRAMMING ==================
 # asdf
 . /opt/asdf-vm/asdf.sh

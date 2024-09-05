@@ -10,3 +10,7 @@ set mark-symlinked-directories On
 set show-all-if-ambiguous On
 set show-all-if-unmodified On
 set visible-stats On
+
+# https://unix.stackexchange.com/questions/27927/is-it-possible-to-configure-ctrl-w-delete-word
+# https://shallowsky.com/blog/linux/bash-word-erase.html
+set bind-tty-special-chars Off
