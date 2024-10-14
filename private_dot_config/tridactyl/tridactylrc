@@ -40,6 +40,7 @@ set hintdelay 100
 " Don't run Tridactyl on some web sites because it doesn't work well, or
 " because the web site has its own keybindings.
 autocmd DocStart mail.google.com mode ignore
+autocmd DocStart noreader.com mode ignore
 
 " Sometimes the status bar in the bottom left corner overlaps the Tridactyl
 " command line, so set an option to move the status bar to the right.
@@ -55,7 +56,9 @@ set searchurls.mvn1 https://central.sonatype.com/search?q=%s
 " Google
 set searchurls.gcn https://www.google.com/search?q=%s&lr=lang_zh-CN
 set searchurls.gs https://www.google.com/search?q=site:%s
-" Git
+" https://github.com/KoriIku/luxirty-search
+set searchurls.goo https://search.luxirty.com/search?q=
+" Github
 set searchurls.gh https://github.com/search?q=%s
 setnull searchurls.github
 " Archlinux
