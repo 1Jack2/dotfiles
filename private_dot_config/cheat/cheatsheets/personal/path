@@ -1,2 +1,0 @@
-# Adding a New Path in Bash
-export PATH=/some/new/path:$PATH

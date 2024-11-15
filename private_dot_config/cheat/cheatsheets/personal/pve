@@ -1,5 +1,0 @@
-# Location of ISO
-/var/lib/vz/template/iso
-
-# Location of vm config
-/etc/pve/nodes/pve/qemu-server/
