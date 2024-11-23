@@ -32,6 +32,11 @@ if status is-interactive
         set --export LS_COLORS "$(vivid generate gruvbox-light)"
     end
 
+    # https://github.com/mzz2017/gg
+    if command -v gg > /dev/null
+        gg completion fish | source
+    end
+
     # ======================================== alias
     abbr -a vi 'nvim'
 
