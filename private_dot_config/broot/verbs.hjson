@@ -6,6 +6,8 @@
 
 verbs: [
 
+{ key: "ctrl-w", internal: ":input_del_word_left" }
+
     # Example 1: launching `tail -n` on the selected file (leaving broot)
     # {
     #     name: tail_lines
