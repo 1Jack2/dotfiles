@@ -49,12 +49,6 @@ if status is-interactive
     abbr -a gu 'gitui'
     abbr -a cm 'chezmoi'
 
-    # use command to bypass the alias
-    # https://github.com/fish-shell/fish-shell/issues/9136#issuecomment-1216988800
-    if command -v trash > /dev/null
-        abbr -a rm 'echo "This is not the command you are looking for."; false'
-    end
-
     # https://github.com/eza-community/eza
     if command -v eza > /dev/null
         abbr -a l 'eza'
@@ -92,6 +86,15 @@ if status is-interactive
     # https://github.com/fish-shell/fish-shell/issues/3730#issuecomment-317011272
     function fish_user_key_bindings
         bind \cw backward-kill-word
+    end
+
+    # use command to bypass the alias
+    # https://github.com/fish-shell/fish-shell/issues/9136#issuecomment-1216988800
+    if command -v trash > /dev/null
+        function rm
+            echo "This is not the command you are looking for."
+            false
+        end
     end
 
 end
