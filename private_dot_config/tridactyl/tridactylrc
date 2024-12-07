@@ -54,9 +54,9 @@ set searchurls.mvn https://mvnrepository.com/search?q=%s
 set searchurls.mvn1 https://central.sonatype.com/search?q=%s
 
 " duckduckgo
-set searchurls.ddg https://duckduckgo.com/?q=
+set searchurls.ddg https://duckduckgo.com/?q=%s+-site:csdn.net
 " Google
-set searchurls.gcn https://www.google.com/search?q=%s&lr=lang_zh-CN
+set searchurls.gcn https://www.google.com/search?q=%s+-site:csdn.net&lr=lang_zh-CN
 set searchurls.gs https://www.google.com/search?q=site:%s
 " https://github.com/KoriIku/luxirty-search
 set searchurls.goo https://search.luxirty.com/search?q=
@@ -71,3 +71,5 @@ set searchurls.neodb https://neodb.social/search/?q=%s&c=all
 " douban
 set searchurls.douban https://www.douban.com/search?q=%s
 
+" default search engine
+set searchengine ddg
