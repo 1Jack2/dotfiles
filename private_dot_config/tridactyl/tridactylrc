@@ -53,8 +53,13 @@ guiset_quiet hoverlink top-right
 set searchurls.mvn https://mvnrepository.com/search?q=%s
 set searchurls.mvn1 https://central.sonatype.com/search?q=%s
 
+" startpage
+set searchurls.startpage https://www.startpage.com/search?query=%s+-site:csdn.net
 " duckduckgo
+" search 'git rerere -site:csdn.net', return nothing.
+" https://www.reddit.com/r/duckduckgo/comments/zcyiki/ddg_web_site_ddg_search_results_have_been_getting/
 set searchurls.ddg https://duckduckgo.com/?q=%s+-site:csdn.net
+set searchurls.! https://duckduckgo.com/?q=!%s
 " Google
 set searchurls.gcn https://www.google.com/search?q=%s+-site:csdn.net&lr=lang_zh-CN
 set searchurls.gs https://www.google.com/search?q=site:%s
@@ -72,4 +77,4 @@ set searchurls.neodb https://neodb.social/search/?q=%s&c=all
 set searchurls.douban https://www.douban.com/search?q=%s
 
 " default search engine
-set searchengine ddg
+set searchengine startpage
