@@ -105,3 +105,5 @@ end
 # nickeb96/puffer-fish
 # jorgebucaran/replay.fish
 # patrickf1/fzf.fish
+# jorgebucaran/autopair.fish
+
