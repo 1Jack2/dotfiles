@@ -7,18 +7,6 @@
 // from the command palette.
 [
   {
-    "context": "Workspace",
-    "bindings": {
-      // "shift shift": "file_finder::Toggle"
-    }
-  },
-  {
-    "context": "Editor",
-    "bindings": {
-      // "j k": ["workspace::SendKeystrokes", "escape"]
-    }
-  },
-  {
     "context": "Dock",
     "bindings": {
       "ctrl-w h": ["workspace::ActivatePaneInDirection", "Left"],
@@ -36,6 +24,27 @@
       "H": ["workspace::SendKeystrokes", "^"],
       "L": ["workspace::SendKeystrokes", "$"],
       "tab": ["workspace::SendKeystrokes", "ctrl-i"]
+    }
+  },
+  {
+    "context": "FileFinder",
+    "bindings": {
+      "ctrl": null,
+      "alt": "file_finder::ToggleMenu"
+    }
+  },
+  {
+    "context": "FileFinder && !menu_open",
+    "bindings": {
+      "ctrl-shift-p": null,
+      "ctrl-j": null,
+      "ctrl-k": null,
+      "ctrl-h": null,
+      "ctrl-l": null,
+      "alt-k": "pane::SplitDown",
+      "alt-i": "pane::SplitUp",
+      "alt-j": "pane::SplitLeft",
+      "alt-l": "pane::SplitRight"
     }
   }
 ]
