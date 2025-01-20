@@ -5,6 +5,15 @@ if status is-interactive
     set -U fish_greeting
     set --export EDITOR nvim
 
+    # ======================================== programming language
+    # golang
+    if command -v go > /dev/null
+        fish_add_path (go env GOPATH)/bin
+        # https://proxy.golang.com.cn/zh/
+        set --export GOPROXY https://goproxy.io,direct
+        set --export GOPRIVATE git.mycompany.com,github.com/my/private
+    end
+
     # ======================================== tool
 
     # https://github.com/jdx/mise
