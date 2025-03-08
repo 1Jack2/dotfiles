@@ -75,6 +75,8 @@ set searchurls.aur https://aur.archlinux.org/packages/?K=%s
 set searchurls.neodb https://neodb.social/search/?q=%s&c=all
 " douban
 set searchurls.douban https://www.douban.com/search?q=%s
+" jina reader
+set searchurls.jina https://r.jina.ai/%s
 
 " default search engine
 set searchengine startpage
