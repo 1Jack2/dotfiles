@@ -9,10 +9,10 @@
   {
     "context": "Dock",
     "bindings": {
-      "ctrl-w h": ["workspace::ActivatePaneInDirection", "Left"],
-      "ctrl-w l": ["workspace::ActivatePaneInDirection", "Right"],
-      "ctrl-w k": ["workspace::ActivatePaneInDirection", "Up"],
-      "ctrl-w j": ["workspace::ActivatePaneInDirection", "Down"]
+      "ctrl-w h": "workspace::ActivatePaneLeft",
+      "ctrl-w l": "workspace::ActivatePaneRight",
+      "ctrl-w k": "workspace::ActivatePaneUp",
+      "ctrl-w j": "workspace::ActivatePaneDown"
       // ... or other keybindings
     }
   },
@@ -45,6 +45,30 @@
       "alt-i": "pane::SplitUp",
       "alt-j": "pane::SplitLeft",
       "alt-l": "pane::SplitRight"
+    }
+  },
+  // https://zed.dev/docs/completions#keybinding-example-displaying-tab-and-alt-tab-on-linux
+  {
+    "context": "Editor && edit_prediction",
+    "bindings": {
+      "alt-i": "editor::AcceptEditPrediction",
+      "tab": null,
+      "alt-l": null,
+      "alt-tab": null
+    }
+  },
+  {
+    "context": "vim_mode == insert && edit_prediction",
+    "bindings": {
+      "tab": "editor::AcceptEditPrediction"
+    }
+  },
+  {
+    "context": "vim_mode == insert && edit_prediction_conflict",
+    "bindings": {
+      "alt-i": "editor::AcceptEditPrediction",
+      // Optional: This makes the default `alt-l` binding do nothing.
+      "alt-l": null
     }
   }
 ]
