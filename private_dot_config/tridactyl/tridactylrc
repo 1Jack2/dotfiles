@@ -58,7 +58,7 @@ set searchurls.startpage https://www.startpage.com/search?query=%s+-site:csdn.ne
 " duckduckgo
 " search 'git rerere -site:csdn.net', return nothing.
 " https://www.reddit.com/r/duckduckgo/comments/zcyiki/ddg_web_site_ddg_search_results_have_been_getting/
-set searchurls.ddg https://duckduckgo.com/?q=%s+-site:csdn.net
+set searchurls.ddg https://duckduckgo.com/?q=%s
 set searchurls.! https://duckduckgo.com/?q=!%s
 " Google
 set searchurls.gcn https://www.google.com/search?q=%s+-site:csdn.net&lr=lang_zh-CN
