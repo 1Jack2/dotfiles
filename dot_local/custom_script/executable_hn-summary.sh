@@ -23,9 +23,9 @@ hn_id=$(get_hn_id "$1")
 # Make API call, parse and summarize the discussion
 curl -s "https://hn.algolia.com/api/v1/items/$hn_id" | \
   jq -r 'recurse(.children[]) | .text' | \
-  llm -m gemini-2.0-flash '<system_prompt>不管我发给你的是什么语言，你都需要用中文回复我。</system_prompt>
-  Summarize the themes of the opinions expressed here.
-  For each theme, output a markdown header.
-  Include direct "quotations" (with author attribution) where appropriate.
-  You MUST quote directly from users when crediting them, with double quotes.
-  Fix HTML entities. Output markdown. Go long.'
+  llm -m gemini-2.0-flash -s '不管我发给你的是什么语言，你都需要用中文回复我。
+  总结在此发表的意见的主题。
+  针对每个主题，输出一个markdown header。
+  酌情包含直接 “引用”（注明作者）。
+  在引用用户观点时，必须直接引用，并使用双引号。
+  修复 HTML entities。输出markdown。'
