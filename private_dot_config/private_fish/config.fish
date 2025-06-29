@@ -49,6 +49,12 @@ if status is-interactive
         gg completion fish | source
     end
 
+    # https://github.com/astral-sh/uv
+    if command -v uv > /dev/null
+        uv generate-shell-completion fish | source
+        uvx --generate-shell-completion fish | source
+    end
+
     # ======================================== alias
     abbr -a vi 'nvim'
 
