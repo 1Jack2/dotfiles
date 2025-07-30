@@ -23,7 +23,7 @@ hn_id=$(get_hn_id "$1")
 # Make API call, parse and summarize the discussion
 curl -s "https://hn.algolia.com/api/v1/items/$hn_id" | \
   jq -r 'recurse(.children[]) | .text' | \
-  llm -m gemini-2.0-flash -s '不管我发给你的是什么语言，你都需要用中文回复我。
+  llm -m gemini-2.5-flash -s '不管我发给你的是什么语言，你都需要用中文回复我。
   总结在此发表的意见的主题。
   针对每个主题，输出一个markdown header。
   酌情包含直接 “引用”（注明作者）。
