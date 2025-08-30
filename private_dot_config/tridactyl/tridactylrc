@@ -54,7 +54,7 @@ set searchurls.mvn https://mvnrepository.com/search?q=%s
 set searchurls.mvn1 https://central.sonatype.com/search?q=%s
 
 " startpage
-set searchurls.startpage https://www.startpage.com/search?query=%s+-site:csdn.net
+set searchurls.startpage https://www.startpage.com/sp/search?query=%s+-site:csdn.net
 " duckduckgo
 " search 'git rerere -site:csdn.net', return nothing.
 " https://www.reddit.com/r/duckduckgo/comments/zcyiki/ddg_web_site_ddg_search_results_have_been_getting/
