@@ -10,7 +10,7 @@ if status is-interactive
 
     # ======================================== programming language
     # golang
-    if command -v go >/dev/null
+    if type -q go
         fish_add_path (go env GOPATH)/bin
         # https://proxy.golang.com.cn/zh/
         set --export GOPROXY https://goproxy.io,direct
@@ -19,7 +19,7 @@ if status is-interactive
 
     # ======================================== tool
 
-    if command -v brew >/dev/null; or test -x /home/linuxbrew/.linuxbrew/bin/brew
+    if type -q brew; or test -x /home/linuxbrew/.linuxbrew/bin/brew
         eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
         set -x HOMEBREW_BREW_GIT_REMOTE "https://mirrors.tuna.tsinghua.edu.cn//git/homebrew/brew.git"
         set -x HOMEBREW_CORE_GIT_REMOTE "https://mirrors.tuna.tsinghua.edu.cn//git/homebrew/homebrew-core.git"
@@ -28,37 +28,37 @@ if status is-interactive
     end
 
     # https://github.com/jdx/mise
-    if command -v mise >/dev/null
+    if type -q mise
         mise activate fish | source
     end
 
     # https://github.com/starship/starship
-    if command -v starship >/dev/null
+    if type -q starship
         starship init fish | source
     end
 
     # https://github.com/ajeetdsouza/zoxide
-    if command -v zoxide >/dev/null
+    if type -q zoxide
         zoxide init fish | source
     end
 
     # https://github.com/atuinsh/atuin
-    if command -v atuin >/dev/null
+    if type -q atuin
         atuin init fish --disable-up-arrow | source
     end
 
     # https://github.com/sharkdp/vivid
-    if command -v vivid >/dev/null
+    if type -q vivid
         set --export LS_COLORS "$(vivid generate gruvbox-light)"
     end
 
     # https://github.com/mzz2017/gg
-    if command -v gg >/dev/null
+    if type -q gg
         gg completion fish | source
     end
 
     # https://github.com/astral-sh/uv
-    if command -v uv >/dev/null
+    if type -q uv
         uv generate-shell-completion fish | source
         uvx --generate-shell-completion fish | source
     end
@@ -80,7 +80,7 @@ if status is-interactive
     end
 
     # https://github.com/eza-community/eza
-    if command -v eza >/dev/null
+    if type -q eza
         abbr -a l eza
         abbr -a ls eza
         abbr -a ll 'eza -l'
@@ -91,7 +91,7 @@ if status is-interactive
         abbr -a lll 'ls -la'
     end
 
-    if command -v broot >/dev/null
+    if type -q broot
         abbr -a l 'br -sdp'
     end
 
@@ -120,7 +120,7 @@ if status is-interactive
 
     # use command to bypass the alias
     # https://github.com/fish-shell/fish-shell/issues/9136#issuecomment-1216988800
-    if command -v trash >/dev/null
+    if type -q trash
         function rm
             echo "This is not the command you are looking for."
             false
