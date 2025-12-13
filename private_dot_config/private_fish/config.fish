@@ -10,7 +10,7 @@ if status is-interactive
 
     # ======================================== programming language
     # golang
-    if command -v go > /dev/null
+    if command -v go >/dev/null
         fish_add_path (go env GOPATH)/bin
         # https://proxy.golang.com.cn/zh/
         set --export GOPROXY https://goproxy.io,direct
@@ -19,44 +19,52 @@ if status is-interactive
 
     # ======================================== tool
 
+    if command -v brew >/dev/null; or test -x /home/linuxbrew/.linuxbrew/bin/brew
+        eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+        set -x HOMEBREW_BREW_GIT_REMOTE "https://mirrors.tuna.tsinghua.edu.cn//git/homebrew/brew.git"
+        set -x HOMEBREW_CORE_GIT_REMOTE "https://mirrors.tuna.tsinghua.edu.cn//git/homebrew/homebrew-core.git"
+        set -x HOMEBREW_API_DOMAIN "https://mirrors.tuna.tsinghua.edu.cn//homebrew-bottles/api"
+        set -x HOMEBREW_BOTTLE_DOMAIN "https://mirrors.tuna.tsinghua.edu.cn//homebrew-bottles"
+    end
+
     # https://github.com/jdx/mise
-    if command -v mise > /dev/null
+    if command -v mise >/dev/null
         mise activate fish | source
     end
 
     # https://github.com/starship/starship
-    if command -v starship > /dev/null
+    if command -v starship >/dev/null
         starship init fish | source
     end
 
     # https://github.com/ajeetdsouza/zoxide
-    if command -v zoxide > /dev/null
+    if command -v zoxide >/dev/null
         zoxide init fish | source
     end
 
     # https://github.com/atuinsh/atuin
-    if command -v atuin > /dev/null
+    if command -v atuin >/dev/null
         atuin init fish --disable-up-arrow | source
     end
 
     # https://github.com/sharkdp/vivid
-    if command -v vivid > /dev/null
+    if command -v vivid >/dev/null
         set --export LS_COLORS "$(vivid generate gruvbox-light)"
     end
 
     # https://github.com/mzz2017/gg
-    if command -v gg > /dev/null
+    if command -v gg >/dev/null
         gg completion fish | source
     end
 
     # https://github.com/astral-sh/uv
-    if command -v uv > /dev/null
+    if command -v uv >/dev/null
         uv generate-shell-completion fish | source
         uvx --generate-shell-completion fish | source
     end
 
     # ======================================== alias
-    abbr -a vi 'nvim'
+    abbr -a vi nvim
 
     abbr -a cp "cp -i"
     abbr -a rm "rm -i"
@@ -64,22 +72,26 @@ if status is-interactive
 
     abbr -a gs 'git status'
     abbr -a gp 'git push'
-    abbr -a gu 'gitui'
-    abbr -a cm 'chezmoi'
+    abbr -a gu lazygit
+    abbr -a cm chezmoi
+
+    if type -q helix
+        abbr --add hx helix
+    end
 
     # https://github.com/eza-community/eza
-    if command -v eza > /dev/null
-        abbr -a l 'eza'
-        abbr -a ls 'eza'
+    if command -v eza >/dev/null
+        abbr -a l eza
+        abbr -a ls eza
         abbr -a ll 'eza -l'
         abbr -a lll 'eza -la'
     else
-        abbr -a l 'ls'
+        abbr -a l ls
         abbr -a ll 'ls -l'
         abbr -a lll 'ls -la'
     end
 
-    if command -v broot > /dev/null
+    if command -v broot >/dev/null
         abbr -a l 'br -sdp'
     end
 
@@ -108,12 +120,15 @@ if status is-interactive
 
     # use command to bypass the alias
     # https://github.com/fish-shell/fish-shell/issues/9136#issuecomment-1216988800
-    if command -v trash > /dev/null
+    if command -v trash >/dev/null
         function rm
             echo "This is not the command you are looking for."
             false
         end
     end
+
+    # ======================================== local config
+    source ~/.config/fish/config_local.fish
 
 end
 
@@ -124,4 +139,3 @@ end
 # jorgebucaran/replay.fish
 # patrickf1/fzf.fish
 # jorgebucaran/autopair.fish
-
