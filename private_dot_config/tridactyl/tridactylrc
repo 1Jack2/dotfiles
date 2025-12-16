@@ -79,4 +79,4 @@ set searchurls.douban https://www.douban.com/search?q=%s
 set searchurls.jina https://r.jina.ai/%s
 
 " default search engine
-set searchengine startpage
+set searchengine ddg
