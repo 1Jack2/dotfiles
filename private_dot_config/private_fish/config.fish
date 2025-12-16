@@ -127,6 +127,16 @@ if status is-interactive
         end
     end
 
+    # code agent
+    function ccx
+        docker run -it --rm \
+            -v (pwd):/workspace \
+            -v $HOME/.claude:/home/user/.claude \
+            -v $HOME/.claude.json:/home/user/.claude.json \
+            -v $HOME/.codex:/home/user/.codex \
+            my-dev $argv
+    end
+
     # ======================================== local config
     source ~/.config/fish/config_local.fish
 
