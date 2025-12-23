@@ -19,29 +19,6 @@
     autocrlf = input
 {{- end }}
 
-[diff]
-    tool = difftastic
-    guitool = kdiff3
-
-[merge]
-    tool = kdiff3
-
-[difftool]
-    prompt = false
-
-[difftool "difftastic"]
-    cmd = difft "$LOCAL" "$REMOTE"
-
-[pager]
-    diff = delta
-    log = delta
-    reflog = delta
-    show = delta
-    difftool = true
-
-[interactive]
-    diffFilter = delta --color-only --features=interactive
-
 # work
 [includeIf "gitdir:~/work/"]
     path = ~/.gitconfig_work
