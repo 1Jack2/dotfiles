@@ -127,13 +127,14 @@ if status is-interactive
         end
     end
 
-    # code agent
+    # coding agent
     function ccx
         docker run -it --rm \
             -v (pwd):/workspace \
             -v $HOME/.claude:/home/user/.claude \
             -v $HOME/.claude.json:/home/user/.claude.json \
             -v $HOME/.codex:/home/user/.codex \
+            -v $HOME/.gitconfig:/home/user/.gitconfig \
             my-dev $argv
     end
 
