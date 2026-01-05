@@ -130,6 +130,7 @@ if status is-interactive
     # coding agent
     function ccx
         docker run -it --rm \
+            -p 9222:9222 \
             -v (pwd):/workspace \
             -v $HOME/.claude:/home/user/.claude \
             -v $HOME/.claude.json:/home/user/.claude.json \
