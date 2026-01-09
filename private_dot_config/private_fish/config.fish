@@ -130,7 +130,9 @@ if status is-interactive
     # coding agent
     function ccx
         docker run -it --rm \
-            -p 9222:9222 \
+            --network host \
+            -e HTTP_PROXY="http://127.0.0.1:7890" \
+            -e HTTPS_PROXY="http://127.0.0.1:7890" \
             -v (pwd):/workspace \
             -v $HOME/.claude:/home/user/.claude \
             -v $HOME/.claude.json:/home/user/.claude.json \
