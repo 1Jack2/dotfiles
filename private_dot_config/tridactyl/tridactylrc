@@ -41,6 +41,10 @@ set hintdelay 100
 " because the web site has its own keybindings.
 autocmd DocStart mail.google.com mode ignore
 autocmd DocStart inoreader.com mode ignore
+autocmd DocStart linear.app mode ignore
+
+# linear
+bindurl linear.app --mode=ignore <C-Space> js document.body.dispatchEvent(new KeyboardEvent('keydown', { bubbles: true, cancelable: true, key: 'k', code: 'KeyK', ctrlKey: true, metaKey: true }))
 
 " Sometimes the status bar in the bottom left corner overlaps the Tridactyl
 " command line, so set an option to move the status bar to the right.
