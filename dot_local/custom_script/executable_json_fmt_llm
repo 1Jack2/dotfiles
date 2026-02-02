@@ -1,0 +1,229 @@
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.8"
+# [tool.uv]
+# index-url = "https://mirrors.aliyun.com/pypi/simple/"
+# ///
+"""
+Format JSON for LLM input by preserving structure and truncating values.
+"""
+
+from __future__ import annotations
+
+import argparse
+import base64
+import binascii
+import hashlib
+import json
+import re
+from typing import Any, Dict, List, Optional, Tuple
+
+_BASE64_CHARS_RE = re.compile(r"^[A-Za-z0-9+/=]+$")
+
+_IMAGE_PREFIXES = {
+    "/9j/": "image/jpeg",
+    "iVBOR": "image/png",
+    "R0lGOD": "image/gif",
+    "Qk": "image/bmp",
+    "UklGR": "image/webp",
+}
+
+
+class FormatterConfig:
+    def __init__(
+        self,
+        max_depth: int = 12,
+        max_string: int = 160,
+        max_array_items: int = 3,
+        max_object_keys: Optional[int] = None,
+        min_base64_len: int = 256,
+        max_base64_validate_len: int = 4096,
+        parse_json_strings: bool = True,
+    ) -> None:
+        self.max_depth = max_depth
+        self.max_string = max_string
+        self.max_array_items = max_array_items
+        self.max_object_keys = max_object_keys
+        self.min_base64_len = min_base64_len
+        self.max_base64_validate_len = max_base64_validate_len
+        self.parse_json_strings = parse_json_strings
+
+
+def _short_hash(text: str, length: int = 8) -> str:
+    return hashlib.sha256(text.encode("utf-8")).hexdigest()[:length]
+
+
+def _normalize_base64(s: str) -> str:
+    # Remove whitespace to allow wrapped base64.
+    return "".join(s.split())
+
+
+def _detect_data_url(s: str) -> Optional[Tuple[str, str]]:
+    # Returns (mime, base64_data) if data URL format detected.
+    if not s.startswith("data:"):
+        return None
+    marker = ";base64,"
+    if marker not in s:
+        return None
+    header, data = s.split(marker, 1)
+    mime = header[5:] or "application/octet-stream"
+    return mime, data
+
+
+def _is_probable_base64(s: str, cfg: FormatterConfig) -> bool:
+    if len(s) < cfg.min_base64_len:
+        return False
+    normalized = _normalize_base64(s)
+    if len(normalized) < cfg.min_base64_len:
+        return False
+    if len(normalized) % 4 != 0:
+        return False
+    if not _BASE64_CHARS_RE.match(normalized):
+        return False
+    # Validate smaller payloads to reduce false positives.
+    if len(normalized) <= cfg.max_base64_validate_len:
+        try:
+            base64.b64decode(normalized, validate=True)
+        except binascii.Error:
+            return False
+    return True
+
+
+def _base64_label(s: str, mime_hint: Optional[str] = None) -> str:
+    normalized = _normalize_base64(s)
+    mime = mime_hint
+    for prefix, detected in _IMAGE_PREFIXES.items():
+        if normalized.startswith(prefix):
+            mime = detected
+            break
+    label = "base64"
+    if mime:
+        label += f" {mime}"
+    return label
+
+
+def _truncate_string(s: str, max_len: int) -> str:
+    if len(s) <= max_len:
+        return s
+    head_len = max(0, max_len - 20)
+    head = s[:head_len]
+    return f"{head}...<len={len(s)}>"
+
+
+def _looks_like_json(s: str) -> bool:
+    stripped = s.strip()
+    if not stripped:
+        return False
+    if stripped[0] not in "[{":
+        return False
+    if stripped[-1] not in "]}":
+        return False
+    return True
+
+
+def _format_value(value: Any, cfg: FormatterConfig, depth: int) -> Any:
+    if isinstance(value, dict):
+        items = list(value.items())
+        if cfg.max_object_keys is not None and len(items) > cfg.max_object_keys:
+            items = items[: cfg.max_object_keys]
+        if depth >= cfg.max_depth:
+            result: Dict[str, Any] = {key: "<max_depth>" for key, _ in items}
+        else:
+            result = {}
+            for key, val in items:
+                result[key] = _format_value(val, cfg, depth + 1)
+        if cfg.max_object_keys is not None and len(value) > cfg.max_object_keys:
+            result["__omitted_keys__"] = len(value) - cfg.max_object_keys
+        return result
+
+    if isinstance(value, list):
+        if depth >= cfg.max_depth:
+            return [f"<max_depth list len={len(value)}>"]
+        result: List[Any] = []
+        limit = min(len(value), cfg.max_array_items)
+        for idx in range(limit):
+            result.append(_format_value(value[idx], cfg, depth + 1))
+        if len(value) > cfg.max_array_items:
+            result.append(f"<... {len(value) - cfg.max_array_items} more items>")
+        return result
+
+    if isinstance(value, str):
+        data_url = _detect_data_url(value)
+        if data_url is not None:
+            mime, data = data_url
+            if _is_probable_base64(data, cfg):
+                label = _base64_label(data, mime_hint=mime)
+                return f"<{label} len={len(data)} sha256={_short_hash(data)}>"
+            # Fall through for non-base64 data URLs.
+
+        if _is_probable_base64(value, cfg):
+            label = _base64_label(value)
+            return f"<{label} len={len(value)} sha256={_short_hash(value)}>"
+
+        if cfg.parse_json_strings and _looks_like_json(value):
+            try:
+                parsed = json.loads(value)
+            except json.JSONDecodeError:
+                return _truncate_string(value, cfg.max_string)
+            formatted = _format_value(parsed, cfg, depth + 1)
+            return {
+                "__stringified_json__": formatted,
+                "__original_length__": len(value),
+            }
+
+        return _truncate_string(value, cfg.max_string)
+
+    return value
+
+
+def format_for_llm(data: Any, cfg: FormatterConfig) -> Any:
+    return _format_value(data, cfg, 0)
+
+
+def _build_arg_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(
+        description="Format JSON to preserve structure while truncating values."
+    )
+    parser.add_argument("input", help="Path to input JSON file")
+    parser.add_argument("-o", "--output", help="Write output JSON to this file")
+    parser.add_argument("--max-depth", type=int, default=12)
+    parser.add_argument("--max-string", type=int, default=160)
+    parser.add_argument("--max-array-items", type=int, default=3)
+    parser.add_argument("--max-object-keys", type=int)
+    parser.add_argument("--no-parse-json-strings", action="store_true")
+    parser.add_argument("--pretty", action="store_true")
+    return parser
+
+
+def main() -> None:
+    parser = _build_arg_parser()
+    args = parser.parse_args()
+
+    cfg = FormatterConfig(
+        max_depth=args.max_depth,
+        max_string=args.max_string,
+        max_array_items=args.max_array_items,
+        max_object_keys=args.max_object_keys,
+        parse_json_strings=not args.no_parse_json_strings,
+    )
+
+    with open(args.input, "r", encoding="utf-8") as handle:
+        data = json.load(handle)
+
+    formatted = format_for_llm(data, cfg)
+
+    if args.pretty:
+        output_text = json.dumps(formatted, indent=2, ensure_ascii=True)
+    else:
+        output_text = json.dumps(formatted, separators=(",", ":"), ensure_ascii=True)
+
+    if args.output:
+        with open(args.output, "w", encoding="utf-8") as handle:
+            handle.write(output_text)
+            handle.write("\n")
+    else:
+        print(output_text)
+
+
+if __name__ == "__main__":
+    main()
