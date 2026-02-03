@@ -341,6 +341,12 @@ chars = "\u0017"
 key = "Back"
 mods = "Control"
 
+# <S-enter> -> <C-j>
+[[keyboard.bindings]]
+key = "Enter"
+mods = "Shift"
+chars = "\u000A"
+
 [mouse]
 hide_when_typing = true
 
