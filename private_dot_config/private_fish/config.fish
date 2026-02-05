@@ -70,8 +70,6 @@ if status is-interactive
     abbr -a rm "rm -i"
     abbr -a mv 'mv -i'
 
-    abbr -a gs 'git status'
-    abbr -a gp 'git push'
     abbr -a gu lazygit
     abbr -a dou lazydocker
     abbr -a cm chezmoi
