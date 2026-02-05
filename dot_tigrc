@@ -1,67 +1,109 @@
 # -------------------------------------------------------------------------
-# Tig Gruvbox Soft Light Theme
+# Gruvbox Soft Light Colors
 # -------------------------------------------------------------------------
 
-# --- 基础 UI 设置 (Soft Light 背景: color223, 深色文字: color237) ---
-color default           color237 color223
-color cursor            color223 color237 bold
-color status            color237 color246
-color title-focus       color223 color66  bold
-color title-blur        color223 color246
-color line-number       color246 default
+# --- 通用颜色 (General colors) ---
+# 核心：深灰字(237) / 米色底(223)
+color default                       237         223
+# 光标：反色，米色字 / 深灰底
+color cursor                        223         237     bold
+color status                        default     default
+color title-focus                   223         66      bold
+color title-blur                    223         246
+color delimiter                     246         default
+color header                        66          default bold
+color section                       172         default
+color line-number                   246         default
+color id                            208         default
+color date                          246         default
+color author                        237         default bold
+color mode                          166         default
+color overflow                      246         default
+color directory                     66          default bold
+color file                          132         default
+color file-size                     246         default
+color grep.file                     166         default
 
-# --- 视图特定设置 ---
+# --- 主视图颜色 (Main view) ---
+color main.cursor                   223         237     bold
+color graph-commit                  166         default
+color main-head                     132         default bold
+color main-remote                   172         default
+color main-tracked                  166         default
+color main-tag                      132         default bold
+color main-local-tag                66          default bold
+color main-ref                      72          default
 
-# 日期与作者
-color date              color246 default
-color author            color237 default bold
+# --- 状态视图颜色 (Status view) ---
+color status.header                 237         223     bold
+color status.section                172         default
+color stat-staged                   106         default
+color stat-unstaged                 124         default
+color stat-untracked                166         default
+color stat-none                     246         default
 
-# 提交 ID (SHA)
-color id                color208 default
+# --- 帮助视图颜色 (Help view) ---
+color help.header                   237         default bold
+color help.section                  166         default
+color help.cursor                   223         237
+color help-group                    172         default
+color help-action                   66          default
 
-# 界面元素
-color delimiter         color246 default
-color main-tag          color132 default bold
-color main-local-tag    color132 default bold
-color main-remote       color172 default bold
-color main-replace      color132 default bold
-color main-tracked      color172 default bold
-color main-ref          color132 default bold
-color main-head         color132 default bold
+# --- Diff 视图深度定制 (Diff view colors) ---
+# 字符串匹配：将元数据加粗或变色
+color "commit "                     172         default
+color "Refs: "                      246         default
+color "Author: "                    66          default
+color "AuthorDate: "                66          default
+color "Commit: "                    66          default
+color "CommitDate: "                66          default
+color "Merge: "                     132         default
+color "TaggerDate: "                66          default
 
-# --- Diff 视图 (代码差异) ---
+# Diff 符号颜色
+color "---"                         124         default
+color "+++"                         106         default
+color "--- "                        124         default
+color "+++ "                        106         default
 
-# 头部信息
-color diff-header       color223 color66
-color diff-index        color223 color66
-color diff-chunk        color132 default
+# Diff 内容颜色 (Soft Light 下需要较深的红绿以保证阅读舒适)
+color diff-index                    66          default
+color diff-stat                     66          default
+color diff-add                      106         default
+color diff-add-highlight            106         229     bold
+color diff-del                      124         default
+color diff-del-highlight            124         229     bold
+color diff-header                   223         66
+color diff-chunk                    132         default
+color "diff-tree "                  166         default
 
-# 代码增删 (Green: 106, Red: 124)
-color diff-add          color106 default
-color diff-add2         color106 default
-color diff-del          color124 default
-color diff-del2         color124 default
+# --- 日志视图 (Log view) ---
+color "Date: "                      66          default
 
-# 统计信息
-color diff-stat         color66  default
+# --- 签名颜色 (Signature) ---
+color "gpg: "                       132         default
+color "Primary key fingerprint: "   132         default
 
-# --- 提交图谱颜色 (Commit Graph) ---
-# 使用 Gruvbox 的标准彩虹色顺序
-color palette-0         color124 default
-color palette-1         color106 default
-color palette-2         color172 default
-color palette-3         color66  default
-color palette-4         color132 default
-color palette-5         color72  default
-color palette-6         color208 default
-color palette-7         color246 default
-color palette-8         color124 default bold
-color palette-9         color106 default bold
-color palette-10        color172 default bold
-color palette-11        color66  default bold
-color palette-12        color132 default bold
-color palette-13        color72  default bold
+# --- Grep 搜索视图 ---
+color grep.file                     172         default bold
+color grep.line-number              246         default
+color grep.delimiter                246         default
+color delimiter                     172         default bold
 
-# --- 杂项 ---
-color search-result     color223 color172
-color grep-line-number  color246 default
+# --- 提交图谱线条 (Graph palette) ---
+# 调整为 Gruvbox 中较深的颜色，避免在浅色背景上刺眼
+color palette-0                     124         default
+color palette-1                     106         default
+color palette-2                     172         default
+color palette-3                     66          default
+color palette-4                     132         default
+color palette-5                     72          default
+color palette-6                     208         default
+color palette-7                     246         default
+# 重复 (加粗版本)
+color palette-8                     124         default bold
+color palette-9                     106         default bold
+color palette-10                    172         default bold
+color palette-11                    66          default bold
+color palette-12                    132         default bold
+color palette-13                    72          default bold
