@@ -64,6 +64,9 @@ set searchurls.startpage https://www.startpage.com/sp/search?query=%s+-site:csdn
 " https://www.reddit.com/r/duckduckgo/comments/zcyiki/ddg_web_site_ddg_search_results_have_been_getting/
 set searchurls.ddg https://duckduckgo.com/?q=%s
 set searchurls.! https://duckduckgo.com/?q=!%s
+" brave
+" https://brave.com/compare/duckduckgo-vs-brave-search/
+set searchurls.brave https://search.brave.com/search?q=%s+NOT+site:csdn.net
 " Google
 set searchurls.gcn https://www.google.com/search?q=%s+-site:csdn.net&lr=lang_zh-CN
 set searchurls.gs https://www.google.com/search?q=site:%s
@@ -83,4 +86,4 @@ set searchurls.douban https://www.douban.com/search?q=%s
 set searchurls.jina https://r.jina.ai/%s
 
 " default search engine
-set searchengine ddg
+set searchengine brave
