@@ -144,6 +144,7 @@ if status is-interactive
             -e http_proxy="http://127.0.0.1:7890" \
             -e https_proxy="http://127.0.0.1:7890" \
             $gitconfig_env \
+            --env-file $HOME/.config/amp/.env \
             -e PRE_COMMIT_HOME="/workspace/$dir/.cache/pre-commit" \
             -e UV_CACHE_DIR="/workspace/$dir/.cache/uv" \
             -e UV_PYTHON_INSTALL_DIR="/workspace/$dir/.cache/uv-python-install" \
@@ -156,6 +157,8 @@ if status is-interactive
             -v $HOME/.claude:/home/user/.claude \
             -v $HOME/.claude.json:/home/user/.claude.json \
             -v $HOME/.codex:/home/user/.codex \
+            -v $HOME/.config/amp:/home/user/.config/amp \
+            -v $HOME/.config/coding-agent/.codex/rules:/home/user/.codex/rules \
             -v $HOME/.config/coding-agent/skills:/home/user/.codex/skills \
             -v $HOME/.gitconfig:/home/user/.gitconfig \
             -v $HOME/.gitconfig_work:/home/user/.gitconfig_work \
