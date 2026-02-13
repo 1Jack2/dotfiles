@@ -80,14 +80,13 @@ if status is-interactive
 
     # https://github.com/eza-community/eza
     if type -q eza
-        abbr -a l eza
-        abbr -a ls eza
-        abbr -a ll 'eza -l'
-        abbr -a lll 'eza -la'
+        alias l 'eza --classify --icons'
+        alias ll 'eza --long --classify --header --icons --git'
+        alias lll 'eza --long --classify --all --header --icons --git'
     else
         abbr -a l ls
-        abbr -a ll 'ls -l'
-        abbr -a lll 'ls -la'
+        abbr -a ll 'ls -lh'
+        abbr -a lll 'ls -lha'
     end
 
     if type -q broot
@@ -124,45 +123,6 @@ if status is-interactive
             echo "This is not the command you are looking for."
             false
         end
-    end
-
-    # coding agent
-    function ccx
-        set -l host_pwd (pwd)
-        set -l dir (basename $host_pwd)
-        set -l gitconfig_env
-
-        if string match -q "$HOME/work/*" $host_pwd
-            set -a gitconfig_env \
-                -e GIT_CONFIG_COUNT=1 \
-                -e GIT_CONFIG_KEY_0=include.path \
-                -e GIT_CONFIG_VALUE_0=/home/user/.gitconfig_work
-        end
-
-        docker run -it --rm \
-            --network host \
-            -e http_proxy="http://127.0.0.1:7890" \
-            -e https_proxy="http://127.0.0.1:7890" \
-            $gitconfig_env \
-            --env-file $HOME/.config/amp/.env \
-            -e PRE_COMMIT_HOME="/workspace/$dir/.cache/pre-commit" \
-            -e UV_CACHE_DIR="/workspace/$dir/.cache/uv" \
-            -e UV_PYTHON_INSTALL_DIR="/workspace/$dir/.cache/uv-python-install" \
-            -e UV_PYTHON_CACHE_DIR="/workspace/$dir/.cache/uv-python-cache" \
-            -e UV_PROJECT_ENVIRONMENT="/tmp/venv-$dir" \
-            -e NPM_CONFIG_CACHE="/workspace/$dir/.cache/npm" \
-            -e NPM_CONFIG_STORE_DIR="/workspace/$dir/.cache/pnpm-store" \
-            -v $host_pwd:"/workspace/$dir" \
-            -w "/workspace/$dir" \
-            -v $HOME/.claude:/home/user/.claude \
-            -v $HOME/.claude.json:/home/user/.claude.json \
-            -v $HOME/.codex:/home/user/.codex \
-            -v $HOME/.config/amp:/home/user/.config/amp \
-            -v $HOME/.config/coding-agent/.codex/rules:/home/user/.codex/rules \
-            -v $HOME/.config/coding-agent/skills:/home/user/.codex/skills \
-            -v $HOME/.gitconfig:/home/user/.gitconfig \
-            -v $HOME/.gitconfig_work:/home/user/.gitconfig_work \
-            my-dev $argv
     end
 
     # ======================================== local config
